@@ -1,0 +1,10 @@
+import type { CSSProperties, FunctionComponent } from "react";
+
+interface AppLogoProps {
+  width?: number;
+  style?: CSSProperties;
+}
+
+export const AppLogo: FunctionComponent<AppLogoProps> = ({ width = 48, style }) => (
+  <img src="/logo.svg" alt="AM" width={width} height={width} style={{ borderRadius: 8, ...style }} />
+);

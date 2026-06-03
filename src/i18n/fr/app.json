@@ -1,0 +1,116 @@
+{
+  "common": {
+    "ok": "Ok",
+    "readMore": "En savoir plus",
+    "viewOnGitHub": "Voir sur GitHub",
+    "viewOnStore": "Voir sur Play Store"
+  },
+  "about": {
+    "title": "À propos de l'application...",
+    "webappRelease": "Version :",
+    "webappReleaseShort": "v{{version}}"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "selector": "Sélecteur de thème"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "technologies": "Technologies",
+    "achievements": "Réalisations",
+    "ai": "IA & ML",
+    "certifications": "Certifications",
+    "demos": "Démos",
+    "contact": "Contact"
+  },
+  "menu": {
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "home": {
+    "role0": "Développeur Mobile",
+    "role1": "Spécialiste Flutter",
+    "role2": "Expert Web",
+    "role3": "Passionné IA",
+    "subtitle": "15+ ans à concevoir des applications mobiles, plateformes web et logiciels d'entreprise",
+    "expertiseTitle": "Compétences clés",
+    "mobile": "Mobile & Natif",
+    "mobileDesc": "Flutter, React Native, développement iOS & Android",
+    "web": "Web & Full Stack",
+    "webDesc": "React, TanStack Router, NestJS, Node.js, APIs REST & GraphQL",
+    "enterprise": "Entreprise & Cloud",
+    "enterpriseDesc": "TypeScript, NestJS, AWS, Docker, CI/CD"
+  },
+  "aboutPage": {
+    "title": "À propos",
+    "subtitle": "Ingénieur logiciel Mobile & Web",
+    "experience": "15+ ans d'expérience",
+    "summary": "Ingénieur logiciel polyvalent avec une expertise approfondie en développement mobile (Flutter, React Native) et applications web complètes. Expérience éprouvée dans les secteurs de la finance, l'assurance, l'éducation, la gestion documentaire et les services gouvernementaux.",
+    "expertiseTitle": "Expertise",
+    "languagesTitle": "Langues",
+    "french": "Français — Langue maternelle",
+    "english": "Anglais — Niveau professionnel",
+    "industriesTitle": "Secteurs",
+    "industriesList": "Finance · Assurance · Éducation · Gouvernement · Gestion documentaire",
+    "resumeLabel": "Télécharger le CV"
+  },
+  "technologies": {
+    "title": "Technologies",
+    "subtitle": "Outils et technologies avec lesquels je travaille",
+    "languages": "Langages de programmation",
+    "mobile": "Développement mobile",
+    "frontend": "Interface utilisateur (Front-End)",
+    "backend": "Serveur & Frameworks",
+    "databases": "Bases de données",
+    "devtools": "Outils de développement",
+    "cloud": "Cloud & CI/CD",
+    "ai": "IA & Apprentissage automatique"
+  },
+  "achievements": {
+    "title": "Réalisations",
+    "subtitle": "Une sélection de projets et accomplissements",
+    "enterprise": "Projets d'entreprise",
+    "opensource": "Open Source",
+    "mobile": "Applications mobiles (Google Play)",
+    "viewOnStore": "Play Store",
+    "viewOnGitHub": "GitHub"
+  },
+  "ai": {
+    "title": "Intelligence Artificielle",
+    "subtitle": "Projets IA, ML & RAG on-device chez Lichens Innovation",
+    "techStackTitle": "Stack IA & ML",
+    "projectsTitle": "Projets IA",
+    "llm": "LLMs & Inférence",
+    "rag": "RAG & Recherche vectorielle",
+    "cv": "Vision par ordinateur",
+    "parsing": "Analyse & parsing de code",
+    "protocols": "Protocoles IA",
+    "mobileAI": "IA On-device / Mobile"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Certifications professionnelles et formations"
+  },
+  "demos": {
+    "title": "Démos",
+    "subtitle": "Dépôts GitHub en direct",
+    "loading": "Chargement des dépôts...",
+    "error": "Impossible de charger les dépôts",
+    "stars": "Étoiles",
+    "forks": "Forks",
+    "viewOnGitHub": "Voir sur GitHub",
+    "searchPlaceholder": "Rechercher des dépôts...",
+    "noResults": "Aucun dépôt trouvé"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Prenons contact",
+    "phone": "Téléphone",
+    "email": "Courriel",
+    "blog": "Blogue",
+    "github": "GitHub",
+    "location": "Montréal, Québec, Canada"
+  }
+}

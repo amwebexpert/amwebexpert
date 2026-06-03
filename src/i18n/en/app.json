@@ -1,0 +1,116 @@
+{
+  "common": {
+    "ok": "Ok",
+    "readMore": "Read more",
+    "viewOnGitHub": "View on GitHub",
+    "viewOnStore": "View on Play Store"
+  },
+  "about": {
+    "title": "About this webapp...",
+    "webappRelease": "Version:",
+    "webappReleaseShort": "v{{version}}"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "selector": "Theme selector"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "technologies": "Technologies",
+    "achievements": "Achievements",
+    "ai": "AI & ML",
+    "certifications": "Certifications",
+    "demos": "Demos",
+    "contact": "Contact"
+  },
+  "menu": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "role0": "Mobile Developer",
+    "role1": "Flutter Specialist",
+    "role2": "Web Expert",
+    "role3": "AI Enthusiast",
+    "subtitle": "15+ years building mobile apps, web platforms & enterprise software",
+    "expertiseTitle": "Core Expertise",
+    "mobile": "Mobile & Native",
+    "mobileDesc": "Flutter, React Native, iOS & Android development",
+    "web": "Web & Full Stack",
+    "webDesc": "React, TanStack Router, NestJS, Node.js, REST & GraphQL APIs",
+    "enterprise": "Enterprise & Cloud",
+    "enterpriseDesc": "TypeScript, NestJS, AWS, Docker, CI/CD"
+  },
+  "aboutPage": {
+    "title": "About",
+    "subtitle": "Mobile & Web Software Engineer",
+    "experience": "15+ years of experience",
+    "summary": "Versatile software engineer with deep expertise in mobile development (Flutter, React Native) and full web applications. Proven track record across finance, insurance, education, document management, and government sectors.",
+    "expertiseTitle": "Expertise",
+    "languagesTitle": "Languages",
+    "french": "French — Native",
+    "english": "English — Business level",
+    "industriesTitle": "Industries",
+    "industriesList": "Finance · Insurance · Education · Government · Document Management",
+    "resumeLabel": "Download Resume"
+  },
+  "technologies": {
+    "title": "Technologies",
+    "subtitle": "Tools and technologies I work with",
+    "languages": "Programming Languages",
+    "mobile": "Mobile Development",
+    "frontend": "Front-End",
+    "backend": "Back-End & Frameworks",
+    "databases": "Databases",
+    "devtools": "Dev Tools",
+    "cloud": "Cloud & CI/CD",
+    "ai": "AI & Machine Learning"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "subtitle": "A selection of projects and accomplishments",
+    "enterprise": "Enterprise Projects",
+    "opensource": "Open Source",
+    "mobile": "Mobile Apps (Google Play)",
+    "viewOnStore": "Play Store",
+    "viewOnGitHub": "GitHub"
+  },
+  "ai": {
+    "title": "Artificial Intelligence",
+    "subtitle": "ML, RAG & On-device AI projects at Lichens Innovation",
+    "techStackTitle": "AI & ML Stack",
+    "projectsTitle": "AI Projects",
+    "llm": "LLMs & Inference",
+    "rag": "RAG & Vector Search",
+    "cv": "Computer Vision",
+    "parsing": "Code Parsing & Analysis",
+    "protocols": "AI Protocols",
+    "mobileAI": "On-device / Mobile AI"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Professional certifications and training"
+  },
+  "demos": {
+    "title": "Demos",
+    "subtitle": "Live GitHub repositories",
+    "loading": "Loading repositories...",
+    "error": "Failed to load repositories",
+    "stars": "Stars",
+    "forks": "Forks",
+    "viewOnGitHub": "View on GitHub",
+    "searchPlaceholder": "Search repositories...",
+    "noResults": "No repositories found"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch",
+    "phone": "Phone",
+    "email": "Email",
+    "blog": "Blog",
+    "github": "GitHub",
+    "location": "Montréal, Québec, Canada"
+  }
+}
