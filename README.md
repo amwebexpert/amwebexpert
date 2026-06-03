@@ -1,3 +1,3 @@
 ### Hi there 👋
 
-see my online resume [here](http://amwebexpert.users.sourceforge.net)
+see my online resume [here](https://amwebexpert.github.io/amwebexpert)
