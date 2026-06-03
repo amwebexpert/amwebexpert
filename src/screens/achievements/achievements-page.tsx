@@ -40,6 +40,18 @@ const OPENSOURCE_PROJECTS: ProjectInfo[] = [
     tags: ["Flutter", "Dart", "MobX", "SQLite", "Node.js"],
     githubUrl: "https://github.com/amwebexpert/guess_the_text",
   },
+  {
+    title: "Chrome Extensions Collection",
+    description: "Collection of Chrome extensions to streamline developer workflows. Tab management, clipboard helpers, and productivity utilities.",
+    tags: ["TypeScript", "React", "Chrome API", "Vite"],
+    githubUrl: "https://github.com/amwebexpert/chrome-extensions-collection",
+  },
+  {
+    title: "Open Mindset App",
+    description: "Python native desktop app for mindset journaling and personal growth tracking, built with KivyMD.",
+    tags: ["Python", "KivyMD", "SQLite"],
+    githubUrl: "https://github.com/amwebexpert/open-mindset",
+  },
 ];
 
 const MOBILE_APPS: ProjectInfo[] = [

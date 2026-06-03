@@ -54,7 +54,8 @@
     "english": "Anglais — Niveau professionnel",
     "industriesTitle": "Secteurs",
     "industriesList": "Finance · Assurance · Éducation · Gouvernement · Gestion documentaire",
-    "resumeLabel": "Télécharger le CV"
+    "resumeLabel": "Télécharger le CV",
+    "educationTitle": "Formation"
   },
   "technologies": {
     "title": "Technologies",
@@ -109,6 +110,7 @@
     "subtitle": "Prenons contact",
     "phone": "Téléphone",
     "email": "Courriel",
+    "linkedin": "LinkedIn",
     "blog": "Blogue",
     "github": "GitHub",
     "location": "Montréal, Québec, Canada"

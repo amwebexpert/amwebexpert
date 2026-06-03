@@ -1,8 +1,24 @@
-import { Avatar, Card, Col, Divider, Row, Tag, theme, Typography } from "antd";
+import { BookOutlined } from "@ant-design/icons";
+import { Avatar, Card, Col, Divider, Row, Tag, theme, Timeline, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 
 const { Title, Paragraph, Text } = Typography;
+
+const EDUCATION = [
+  {
+    degree: "Baccalauréat en informatique",
+    degreeEn: "Bachelor's degree in Computer Science",
+    school: "Université du Québec à Trois-Rivières",
+    years: "1992 – 1995",
+  },
+  {
+    degree: "Baccalauréat en mathématiques",
+    degreeEn: "Bachelor's degree in Mathematics",
+    school: "Université du Québec à Trois-Rivières",
+    years: "1988 – 1992",
+  },
+];
 
 const EXPERTISE_ITEMS = [
   "Mobile app architecture & development (Flutter, React Native)",
@@ -73,7 +89,7 @@ export const AboutPage: FunctionComponent = () => {
             <Paragraph style={{ fontSize: 15, lineHeight: 1.8, margin: 0 }}>{t("aboutPage:summary")}</Paragraph>
           </Card>
 
-          <Card>
+          <Card style={{ marginBottom: 16 }}>
             <Title level={5} style={{ marginBottom: 16 }}>
               {t("aboutPage:expertiseTitle")}
             </Title>
@@ -84,6 +100,31 @@ export const AboutPage: FunctionComponent = () => {
                 </li>
               ))}
             </ul>
+          </Card>
+
+          <Card>
+            <Title level={5} style={{ marginBottom: 16 }}>
+              <BookOutlined style={{ marginRight: 8, color: token.colorPrimary }} />
+              {t("aboutPage:educationTitle")}
+            </Title>
+            <Timeline
+              items={EDUCATION.map(({ degree, degreeEn, school, years }) => ({
+                color: token.colorPrimary,
+                children: (
+                  <div>
+                    <Text strong style={{ display: "block" }}>
+                      {i18n.language === "fr" ? degree : degreeEn}
+                    </Text>
+                    <Text type="secondary" style={{ fontSize: 13 }}>
+                      {school}
+                    </Text>
+                    <Text type="secondary" style={{ fontSize: 12, display: "block" }}>
+                      {years}
+                    </Text>
+                  </div>
+                ),
+              }))}
+            />
           </Card>
         </Col>
       </Row>

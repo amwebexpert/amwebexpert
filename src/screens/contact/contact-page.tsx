@@ -1,4 +1,4 @@
-import { GithubOutlined, MailOutlined, PhoneOutlined, ReadOutlined } from "@ant-design/icons";
+import { GithubOutlined, LinkedinOutlined, MailOutlined, PhoneOutlined, ReadOutlined } from "@ant-design/icons";
 import { Card, Col, Row, theme, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
@@ -28,6 +28,12 @@ const CONTACT_ITEMS: ContactItem[] = [
     labelKey: "contact:github",
     value: "github.com/amwebexpert",
     href: "https://github.com/amwebexpert",
+  },
+  {
+    icon: <LinkedinOutlined />,
+    labelKey: "contact:linkedin",
+    value: "linkedin.com/in/amwebexpert",
+    href: "https://www.linkedin.com/in/amwebexpert/",
   },
   {
     icon: <ReadOutlined />,

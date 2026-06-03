@@ -54,7 +54,8 @@
     "english": "English — Business level",
     "industriesTitle": "Industries",
     "industriesList": "Finance · Insurance · Education · Government · Document Management",
-    "resumeLabel": "Download Resume"
+    "resumeLabel": "Download Resume",
+    "educationTitle": "Education"
   },
   "technologies": {
     "title": "Technologies",
@@ -109,6 +110,7 @@
     "subtitle": "Get in touch",
     "phone": "Phone",
     "email": "Email",
+    "linkedin": "LinkedIn",
     "blog": "Blog",
     "github": "GitHub",
     "location": "Montréal, Québec, Canada"
