@@ -2,7 +2,7 @@
   "name": "amwebexpert",
   "description": "André Masson — Professional CV / Resume",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "author": "André Masson",
   "repository": "https://github.com/amwebexpert/amwebexpert",
@@ -15,7 +15,7 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "npx tsc --noEmit --project tsconfig.app.json",
     "preview": "vite preview",
-    "version:bump": "node scripts/generate-version.mjs"
+    "generate:version": "node scripts/generate-version.mjs"
   },
   "dependencies": {
     "@ant-design/icons": "5.6.1",
