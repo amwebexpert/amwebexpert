@@ -1,10 +1,9 @@
-import { Button, Card, Divider, Modal, Space, Typography } from "antd";
+import { Avatar, Button, Divider, Modal, Space, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
-import { AppLogo } from "~/components/logos/app-logo";
 import { APP_VERSION_INFO } from "~/constants";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 interface AppAboutInfoModalProps {
   open: boolean;
@@ -26,27 +25,28 @@ export const AppAboutInfoModal: FunctionComponent<AppAboutInfoModalProps> = ({ o
       ]}
       centered
     >
-      <Card
-        style={{ textAlign: "center", marginTop: 16 }}
-        cover={
-          <div style={{ padding: "16px 0 8px", display: "flex", justifyContent: "center" }}>
-            <AppLogo width={64} />
-          </div>
-        }
-      >
-        <Divider />
-        <Space direction="vertical" size="small" style={{ width: "100%" }}>
-          <div>
-            <Text>{t("about:webappRelease")} </Text>
-            <Text strong>
-              {APP_VERSION_INFO.VERSION} — {APP_VERSION_INFO.VERSION_DATE}
-            </Text>
-          </div>
-          <div>
-            <Text type="secondary">{APP_VERSION_INFO.AUTHOR}</Text>
-          </div>
-        </Space>
-      </Card>
+      <div style={{ textAlign: "center", padding: "16px 0 8px" }}>
+        <Avatar src={`${import.meta.env.BASE_URL}profile.jpg`} size={96} style={{ fontSize: 36 }}>
+          AM
+        </Avatar>
+        <Title level={5} style={{ marginTop: 12, marginBottom: 0 }}>
+          André Masson
+        </Title>
+        <Text type="secondary" style={{ fontSize: 13 }}>
+          {APP_VERSION_INFO.AUTHOR}
+        </Text>
+      </div>
+
+      <Divider style={{ margin: "12px 0" }} />
+
+      <Space direction="vertical" size="small" style={{ width: "100%", textAlign: "center" }}>
+        <div>
+          <Text>{t("about:webappRelease")} </Text>
+          <Text strong>
+            {APP_VERSION_INFO.VERSION} — {APP_VERSION_INFO.VERSION_DATE}
+          </Text>
+        </div>
+      </Space>
     </Modal>
   );
 };

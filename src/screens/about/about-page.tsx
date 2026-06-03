@@ -52,7 +52,7 @@ export const AboutPage: FunctionComponent = () => {
       <Row gutter={[24, 24]}>
         <Col xs={24} md={8}>
           <Card style={{ textAlign: "center" }}>
-            <Avatar src="/profile.jpg" size={120} style={{ fontSize: 40, marginBottom: 16 }}>
+            <Avatar src={`${import.meta.env.BASE_URL}profile.jpg`} size={120} style={{ fontSize: 40, marginBottom: 16 }}>
               AM
             </Avatar>
             <Title level={4} style={{ margin: "8px 0 4px" }}>
