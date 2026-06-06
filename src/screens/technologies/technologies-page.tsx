@@ -18,7 +18,7 @@ const TECH_CATEGORIES = [
   },
   {
     key: "backend",
-    techs: ["NestJS", "Node.js", "GraphQL", "Apollo", "REST", "Swagger"],
+    techs: ["NestJS", "Node.js", "GraphQL", "Apollo", "REST", "OpenApi", "Swagger"],
   },
   {
     key: "databases",
@@ -26,7 +26,7 @@ const TECH_CATEGORIES = [
   },
   {
     key: "devtools",
-    techs: ["VSCode", "IntelliJ", "Android Studio", "Xcode", "Git", "GitHub", "Gradle", "Maven", "Jenkins", "SonarQube"],
+    techs: ["VSCode", "Cursor", "Claude Code", "IntelliJ", "Android Studio", "Xcode", "Git", "GitHub", "Gradle", "Maven", "Jenkins", "SonarQube"],
   },
   {
     key: "cloud",

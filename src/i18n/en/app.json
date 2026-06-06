@@ -18,7 +18,7 @@
     "home": "Home",
     "about": "About",
     "technologies": "Technologies",
-    "achievements": "Achievements",
+    "achievements": "Open Source Projects",
     "ai": "AI & ML",
     "demos": "Demos",
     "contact": "Contact"
@@ -68,10 +68,8 @@
     "ai": "AI & Machine Learning"
   },
   "achievements": {
-    "title": "Achievements",
-    "subtitle": "A selection of projects and accomplishments",
-    "enterprise": "Enterprise Projects",
-    "opensource": "Open Source",
+    "title": "Open Source Projects",
+    "subtitle": "A selection of open source projects on GitHub",
     "viewOnGitHub": "GitHub"
   },
   "ai": {
@@ -103,7 +101,6 @@
     "phone": "Phone",
     "email": "Email",
     "linkedin": "LinkedIn",
-    "blog": "Blog",
     "github": "GitHub",
     "location": "Montréal, Québec, Canada"
   }
