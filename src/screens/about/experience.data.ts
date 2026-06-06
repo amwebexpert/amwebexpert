@@ -1,5 +1,6 @@
 export type ExperienceEntry = {
   company: string;
+  logo: string;
   role: string;
   roleFr: string;
   period: string;
@@ -12,6 +13,7 @@ export type ExperienceEntry = {
 export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   {
     company: "Lichens Innovation",
+    logo: "companies/lichens.png",
     role: "Senior Software Engineer",
     roleFr: "Ingénieur logiciel senior",
     period: "Dec 2024 – Present",
@@ -30,6 +32,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Thirdbridge",
+    logo: "companies/thirdbridge.png",
     role: "Mobile Engineer",
     roleFr: "Ingénieur mobile",
     period: "Nov 2023 – Dec 2024",
@@ -47,6 +50,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Norda Stelo",
+    logo: "companies/norda-stelo.png",
     role: "Senior Software Engineer",
     roleFr: "Ingénieur logiciel senior",
     period: "Nov 2022 – Nov 2023",
@@ -64,6 +68,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Levio",
+    logo: "companies/levio.svg",
     role: "Mobile Software Engineer",
     roleFr: "Ingénieur logiciel mobile",
     period: "Mar 2021 – Oct 2022",
@@ -81,6 +86,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Upwave",
+    logo: "companies/upwave.svg",
     role: "Full-stack Software Engineer",
     roleFr: "Ingénieur logiciel full-stack",
     period: "Feb 2020 – Feb 2021",
@@ -98,6 +104,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Desjardins",
+    logo: "companies/desjardins.png",
     role: "Full Stack Software Engineer",
     roleFr: "Ingénieur logiciel full-stack",
     period: "Jan 2019 – Jan 2020",
@@ -115,6 +122,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "ACCEO Solutions",
+    logo: "companies/acceo.png",
     role: "Development Team Lead",
     roleFr: "Chef d'équipe de développement",
     period: "Oct 2013 – Sep 2017",

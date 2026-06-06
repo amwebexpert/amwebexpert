@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import { EDUCATION_ENTRIES } from "./education.data";
+import { ExperienceCompanyLogo, experienceLogoSize } from "./experience-company-logo";
 import { EXPERIENCE_ENTRIES } from "./experience.data";
 import { PUBLICATION_ENTRIES } from "./publications.data";
 import { TESTIMONIAL_ENTRIES } from "./testimonials.data";
@@ -115,7 +116,7 @@ export const AboutPage: FunctionComponent = () => {
             <Timeline
               items={EDUCATION_ENTRIES.map(({ degree, degreeEn, school, years }) => ({
                 color: token.colorPrimary,
-                children: (
+                content: (
                   <div>
                     <Text strong style={{ display: "block" }}>
                       {isFrench ? degree : degreeEn}
@@ -142,7 +143,19 @@ export const AboutPage: FunctionComponent = () => {
         <Timeline
           items={EXPERIENCE_ENTRIES.map((entry) => ({
             color: token.colorPrimary,
-            children: (
+            icon: <ExperienceCompanyLogo src={entry.logo} alt={entry.company} />,
+            styles: {
+              icon: {
+                width: experienceLogoSize,
+                height: experienceLogoSize,
+                minWidth: experienceLogoSize,
+                lineHeight: `${experienceLogoSize}px`,
+                flexShrink: 0,
+                background: "none",
+                border: "none",
+              },
+            },
+            content: (
               <div>
                 <Text strong style={{ display: "block" }}>
                   {isFrench ? entry.roleFr : entry.role}
