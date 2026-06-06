@@ -94,21 +94,13 @@
         "title": "Web Toolbox",
         "description": "Collection d'outils développeur React/TypeScript — formateurs, convertisseurs, QR codes, UUIDs, OCR, et plus. Disponible en SPA web ou application Electron."
       },
-      "amwebexpert": {
-        "title": "amwebexpert",
-        "description": "CV professionnel interactif et portfolio web. SPA React/TypeScript avec Ant Design, TanStack Router, support multilingue (EN/FR) et déploiement GitHub Pages."
-      },
       "guessTheText": {
         "title": "Guess the Text",
         "description": "Jeu éducatif Flutter/Dart déployable sur Linux, Android, iOS, Web et macOS. MobX, persistance locale, pattern IoC, tests E2E et API REST Node.js/NestJS."
       },
       "chromeExtensions": {
         "title": "Chrome Extensions Collection",
-        "description": "Collection d'extensions Chrome pour optimiser les workflows développeur. Gestion d'onglets, presse-papiers et utilitaires de productivité."
-      },
-      "codingGuideHelper": {
-        "title": "Coding Guide Helper",
-        "description": "Extension Chrome pour faciliter les revues de PR et parcourir les standards de code. Intègre le guide de développement du projet directement dans le navigateur."
+        "description": "Collection d'extensions Chrome pour optimiser les workflows développeur — gestion d'onglets, presse-papiers, utilitaires de productivité, et Coding Guide Helper pour faciliter les revues de PR et parcourir les standards de code."
       },
       "rnPocCollection": {
         "title": "Collection POC React Native",

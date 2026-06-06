@@ -1,5 +1,5 @@
 import { GithubOutlined } from "@ant-design/icons";
-import { Button, Card, Space, Tag, Typography } from "antd";
+import { Avatar, Button, Card, Flex, Space, Tag, Typography } from "antd";
 import type { FunctionComponent } from "react";
 
 export interface ProjectInfo {
@@ -7,6 +7,7 @@ export interface ProjectInfo {
   description: string;
   tags: string[];
   githubUrl?: string;
+  logo?: string;
 }
 
 interface ProjectCardProps {
@@ -20,15 +21,34 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({ project, gith
     style={{ height: "100%" }}
     actions={[
       project.githubUrl && (
-        <Button key="github" type="link" icon={<GithubOutlined />} href={project.githubUrl} target="_blank" size="small">
+        <Button
+          key="github"
+          type="link"
+          icon={<GithubOutlined />}
+          href={project.githubUrl}
+          target="_blank"
+          size="small"
+          styles={{ icon: { marginInlineEnd: 6 } }}
+        >
           {githubLabel}
         </Button>
       ),
     ].filter(Boolean)}
   >
-    <Typography.Title level={5} style={{ marginBottom: 8 }}>
-      {project.title}
-    </Typography.Title>
+    <Flex align="center" gap={12} style={{ marginBottom: 12 }}>
+      {project.logo && (
+        <Avatar
+          src={`${import.meta.env.BASE_URL}${project.logo}`}
+          alt={project.title}
+          size={48}
+          shape="square"
+          style={{ flexShrink: 0, borderRadius: 8 }}
+        />
+      )}
+      <Typography.Title level={5} style={{ margin: 0 }}>
+        {project.title}
+      </Typography.Title>
+    </Flex>
     <Typography.Paragraph type="secondary" style={{ fontSize: 13, marginBottom: 12 }}>
       {project.description}
     </Typography.Paragraph>

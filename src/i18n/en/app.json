@@ -94,21 +94,13 @@
         "title": "Web Toolbox",
         "description": "React/TypeScript collection of developer tools — formatters, converters, QR codes, UUIDs, OCR, and more. Available as a web SPA or Electron desktop app."
       },
-      "amwebexpert": {
-        "title": "amwebexpert",
-        "description": "Interactive professional CV and portfolio webapp. React/TypeScript SPA with Ant Design, TanStack Router, multilingual support (EN/FR), and GitHub Pages deployment."
-      },
       "guessTheText": {
         "title": "Guess the Text",
         "description": "Flutter/Dart educational word game deployable on Linux, Android, iOS, Web, and macOS. MobX state management, local persistence, IoC pattern, E2E tests, and Node.js/NestJS REST API backend."
       },
       "chromeExtensions": {
         "title": "Chrome Extensions Collection",
-        "description": "Collection of Chrome extensions to streamline developer workflows. Tab management, clipboard helpers, and productivity utilities."
-      },
-      "codingGuideHelper": {
-        "title": "Coding Guide Helper",
-        "description": "Chrome extension to assist pull request reviews and browse coding standards. Integrates your project's development guide directly into the browser."
+        "description": "Collection of Chrome extensions to streamline developer workflows — tab management, clipboard helpers, productivity utilities, and Coding Guide Helper for pull request reviews and coding standards browsing."
       },
       "rnPocCollection": {
         "title": "React Native POC Collection",

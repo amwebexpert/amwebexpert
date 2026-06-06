@@ -7,11 +7,12 @@ import { ProjectCard } from "./project-card";
 export const AchievementsPage: FunctionComponent = () => {
   const { t } = useTranslation();
 
-  const projects = OPENSOURCE_PROJECT_ENTRIES.map(({ key, tags, githubUrl }) => ({
+  const projects = OPENSOURCE_PROJECT_ENTRIES.map(({ key, tags, githubUrl, logo }) => ({
     title: t(`achievements:projects.${key}.title`),
     description: t(`achievements:projects.${key}.description`),
     tags,
     githubUrl,
+    logo,
   }));
 
   return (
