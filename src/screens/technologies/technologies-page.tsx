@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 import { FadeInItem } from "~/components/fade-in-item";
 import { TechCategory } from "./tech-category";
 
-const TECH_CATEGORIES: { key: string; icon: ReactNode; techs: string[] }[] = [
+export const TECH_CATEGORIES: { key: string; icon: ReactNode; techs: string[] }[] = [
   {
     key: "languages",
     icon: <JavaScriptOutlined />,

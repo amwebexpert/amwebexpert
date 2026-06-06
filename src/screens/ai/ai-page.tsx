@@ -5,7 +5,7 @@ import { FadeInItem } from "~/components/fade-in-item";
 import { AiProjectCard, type AiProjectInfo } from "./ai-project-card";
 import { AiTechStack } from "./ai-tech-stack";
 
-const AI_PROJECTS: AiProjectInfo[] = [
+export const AI_PROJECTS: AiProjectInfo[] = [
   {
     title: "Grizzly Detector",
     company: "Lichens Innovation",

@@ -48,6 +48,7 @@
     "subtitle": "Ingénieur logiciel senior — Mobile & Full-Stack",
     "experience": "20+ ans d'expérience",
     "currentEmployer": "Lichens Innovation · depuis déc. 2024",
+    "summaryTitle": "Résumé",
     "summary": "Ingénieur logiciel mobile et full-stack expérimenté sur des projets à grande échelle en finance, gouvernement et assurance. Backends Spring Boot et Node.js ; mobile avec Flutter et React Native. Actuellement, conception d'outils IA industriels pour les mines et la métallurgie en tant que conseiller technologique chez Lichens Innovation.",
     "expertiseTitle": "Expertise",
     "languagesTitle": "Langues",
@@ -144,5 +145,11 @@
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "location": "Montréal, Québec, Canada"
+  },
+  "pdf": {
+    "generateResume": "Générer le CV en PDF",
+    "success": "CV PDF généré",
+    "error": "Échec de la génération du CV PDF",
+    "exportFileDescription": "Enregistré sous {{filename}}"
   }
 }

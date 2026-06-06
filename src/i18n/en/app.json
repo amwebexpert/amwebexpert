@@ -48,6 +48,7 @@
     "subtitle": "Senior Software Engineer — Mobile & Full-Stack",
     "experience": "20+ years of experience",
     "currentEmployer": "Lichens Innovation · since Dec 2024",
+    "summaryTitle": "Summary",
     "summary": "Experienced mobile and full-stack software engineer working on large-scale projects for financial, government, and insurance organizations. Backend solutions with Spring Boot and Node.js; mobile with Flutter and React Native. Currently building industrial AI tools for mining & metallurgy as a technology advisor at Lichens Innovation.",
     "expertiseTitle": "Expertise",
     "languagesTitle": "Languages",
@@ -144,5 +145,11 @@
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "location": "Montréal, Québec, Canada"
+  },
+  "pdf": {
+    "generateResume": "Generate PDF Resume",
+    "success": "PDF resume generated",
+    "error": "Failed to generate PDF resume",
+    "exportFileDescription": "Saved as {{filename}}"
   }
 }

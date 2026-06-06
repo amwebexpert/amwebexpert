@@ -2,6 +2,7 @@ import { InfoOutlined } from "@ant-design/icons";
 import { useToggle } from "@uidotdev/usehooks";
 import { Button, Flex, Space } from "antd";
 import type { FunctionComponent } from "react";
+import { ActionGeneratePdf } from "./action-generate-pdf";
 import { AppAboutInfoModal } from "./app-about-info-modal";
 import { AppLanguageSelector } from "./app-language-selector";
 import { AppThemeModeSelector } from "./app-theme-mode-selector";
@@ -15,6 +16,7 @@ export const AppHeader: FunctionComponent = () => {
         <Space>
           <AppThemeModeSelector />
           <AppLanguageSelector />
+          <ActionGeneratePdf />
           <Button type="text" shape="circle" icon={<InfoOutlined />} onClick={() => toggleAboutModal()} />
         </Space>
       </Flex>

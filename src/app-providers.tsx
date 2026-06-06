@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { App as AntDesignAppWrapper, ConfigProvider } from "antd";
 import "antd/dist/reset.css";
 import type { PropsWithChildren } from "react";
+import { Toaster } from "sonner";
 import { StrictMode, useEffect } from "react";
 import { useCurrentLocale } from "./i18n/use-current-locale";
 import { useThemeMode } from "./store/ui-preferences.store";
@@ -25,7 +26,10 @@ export const AppProviders = ({ children }: PropsWithChildren) => {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <ConfigProvider theme={getThemeConfig({ mode })} locale={locale}>
-          <AntDesignAppWrapper>{children}</AntDesignAppWrapper>
+          <AntDesignAppWrapper>
+            <Toaster richColors position="bottom-right" />
+            {children}
+          </AntDesignAppWrapper>
         </ConfigProvider>
       </QueryClientProvider>
     </StrictMode>
