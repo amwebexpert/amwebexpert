@@ -1,26 +1,46 @@
-import { theme } from "antd";
 import type { FunctionComponent } from "react";
+import { useThemeMode } from "../../store/ui-preferences.store";
 
-const LOGO_SIZE = 36;
+const LOGO_SIZE = 81;
+
+/** Fixed surfaces paired with theme-specific logo assets. */
+const LOGO_SURFACES = {
+  light: {
+    background: "#ffffff",
+    border: "rgba(0, 0, 0, 0.1)",
+  },
+  dark: {
+    background: "#0f1117",
+    border: "rgba(255, 255, 255, 0.12)",
+  },
+} as const;
 
 type ExperienceCompanyLogoProps = {
-  src: string;
+  logoLight: string;
+  logoDark: string;
   alt: string;
   size?: number;
 };
 
 export const experienceLogoSize = LOGO_SIZE;
 
+const resolveLogoSrc = (logoLight: string, logoDark: string, themeMode: "light" | "dark") => {
+  const path = themeMode === "dark" ? logoDark : logoLight;
+  return `${import.meta.env.BASE_URL}${path}`;
+};
+
 export const ExperienceCompanyLogo: FunctionComponent<ExperienceCompanyLogoProps> = ({
-  src,
+  logoLight,
+  logoDark,
   alt,
   size = LOGO_SIZE,
 }) => {
-  const { token } = theme.useToken();
+  const themeMode = useThemeMode();
+  const { background, border } = LOGO_SURFACES[themeMode];
 
   return (
     <img
-      src={`${import.meta.env.BASE_URL}${src}`}
+      src={resolveLogoSrc(logoLight, logoDark, themeMode)}
       alt={alt}
       width={size}
       height={size}
@@ -28,8 +48,8 @@ export const ExperienceCompanyLogo: FunctionComponent<ExperienceCompanyLogoProps
         display: "block",
         objectFit: "contain",
         borderRadius: 6,
-        background: token.colorBgContainer,
-        border: `1px solid ${token.colorBorderSecondary}`,
+        background,
+        border: `1px solid ${border}`,
         padding: 3,
         boxSizing: "border-box",
       }}

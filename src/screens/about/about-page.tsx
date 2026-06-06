@@ -11,6 +11,10 @@ import { TESTIMONIAL_ENTRIES } from "./testimonials.data";
 
 const { Title, Paragraph, Text } = Typography;
 
+/** Offsets timeline icon to align with the first content line (role title). */
+const experienceIconTopOffset = Math.round((experienceLogoSize - 22) / 2);
+const experienceRailTop = experienceLogoSize + experienceIconTopOffset;
+
 const EXPERTISE_ITEMS = [
   "Mobile app architecture & development (Flutter, React Native)",
   "Full-stack web development (React, NestJS, Node.js)",
@@ -143,8 +147,19 @@ export const AboutPage: FunctionComponent = () => {
         <Timeline
           items={EXPERIENCE_ENTRIES.map((entry) => ({
             color: token.colorPrimary,
-            icon: <ExperienceCompanyLogo src={entry.logo} alt={entry.company} />,
+            icon: (
+              <ExperienceCompanyLogo
+                logoLight={entry.logoLight}
+                logoDark={entry.logoDark}
+                alt={entry.company}
+              />
+            ),
             styles: {
+              root: {
+                ["--ant-cmp-steps-icon-size" as string]: `${experienceLogoSize}px`,
+                ["--ant-cmp-steps-icon-size-max" as string]: `${experienceLogoSize}px`,
+                ["--ant-cmp-steps-icon-size-active" as string]: `${experienceLogoSize}px`,
+              },
               icon: {
                 width: experienceLogoSize,
                 height: experienceLogoSize,
@@ -153,6 +168,14 @@ export const AboutPage: FunctionComponent = () => {
                 flexShrink: 0,
                 background: "none",
                 border: "none",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: experienceIconTopOffset,
+              },
+              rail: {
+                top: experienceRailTop,
+                bottom: -experienceIconTopOffset,
               },
             },
             content: (

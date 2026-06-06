@@ -1,6 +1,7 @@
 export type ExperienceEntry = {
   company: string;
-  logo: string;
+  logoLight: string;
+  logoDark: string;
   role: string;
   roleFr: string;
   period: string;
@@ -13,7 +14,8 @@ export type ExperienceEntry = {
 export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   {
     company: "Lichens Innovation",
-    logo: "companies/lichens.png",
+    logoLight: "companies/lichens-light.png",
+    logoDark: "companies/lichens-dark.png",
     role: "Senior Software Engineer",
     roleFr: "Ingénieur logiciel senior",
     period: "Dec 2024 – Present",
@@ -32,7 +34,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Thirdbridge",
-    logo: "companies/thirdbridge.png",
+    logoLight: "companies/thirdbridge-light.svg",
+    logoDark: "companies/thirdbridge-dark.svg",
     role: "Mobile Engineer",
     roleFr: "Ingénieur mobile",
     period: "Nov 2023 – Dec 2024",
@@ -50,7 +53,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Norda Stelo",
-    logo: "companies/norda-stelo.png",
+    logoLight: "companies/norda-stelo-light.png",
+    logoDark: "companies/norda-stelo-dark.png",
     role: "Senior Software Engineer",
     roleFr: "Ingénieur logiciel senior",
     period: "Nov 2022 – Nov 2023",
@@ -68,7 +72,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Levio",
-    logo: "companies/levio.svg",
+    logoLight: "companies/levio-light.svg",
+    logoDark: "companies/levio-dark.svg",
     role: "Mobile Software Engineer",
     roleFr: "Ingénieur logiciel mobile",
     period: "Mar 2021 – Oct 2022",
@@ -86,7 +91,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Upwave",
-    logo: "companies/upwave.svg",
+    logoLight: "companies/upwave-light.svg",
+    logoDark: "companies/upwave-dark.svg",
     role: "Full-stack Software Engineer",
     roleFr: "Ingénieur logiciel full-stack",
     period: "Feb 2020 – Feb 2021",
@@ -104,7 +110,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "Desjardins",
-    logo: "companies/desjardins.png",
+    logoLight: "companies/desjardins-light.png",
+    logoDark: "companies/desjardins-dark.png",
     role: "Full Stack Software Engineer",
     roleFr: "Ingénieur logiciel full-stack",
     period: "Jan 2019 – Jan 2020",
@@ -122,7 +129,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     company: "ACCEO Solutions",
-    logo: "companies/acceo.png",
+    logoLight: "companies/acceo-light.png",
+    logoDark: "companies/acceo-dark.png",
     role: "Development Team Lead",
     roleFr: "Chef d'équipe de développement",
     period: "Oct 2013 – Sep 2017",
