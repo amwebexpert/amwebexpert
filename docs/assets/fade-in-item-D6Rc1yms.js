@@ -1,1 +1,0 @@
-import{Wn as e}from"./useTranslation-BxftB21g.js";var t=e(),n=({index:e,children:n,baseDelayMs:r=0,stepDelayMs:i=80,style:a})=>(0,t.jsx)(`div`,{style:{opacity:0,animation:`fadeInUp 0.5s ease forwards`,animationDelay:`${r+e*i}ms`,...a},children:n});export{n as t};

@@ -1,1 +1,0 @@
-import{c as e,l as t}from"./useTranslation-BxftB21g.js";var n=t,r=e;export{n,r as t};
