@@ -198,5 +198,65 @@
     "success": "CV PDF généré",
     "error": "Échec de la génération du CV PDF",
     "exportFileDescription": "Enregistré sous {{filename}}"
+  },
+  "experience": {
+    "lichensInnovation": {
+      "role": "Ingénieur logiciel senior",
+      "bullets": [
+        "Solutions IA industrielles pour mines et métallurgie : vision par ordinateur, RAG, outils MCP",
+        "Pipelines CV temps réel (Mask R-CNN), recherche sémantique de code, RAG mobile on-device",
+        "Conseiller technologique — outils IA pratiques et fiables pour l'industrie",
+        "App terrain (Expo) : flux MJPEG, streaming natif, suivi 3D temps réel des conduites (Three.js, WebSocket)",
+        "App QA manufacture : inspections auto, diagnostic cam/GPS, export PDF/Excel, OTA et paramétrage usine"
+      ]
+    },
+    "thirdbridge": {
+      "role": "Ingénieur mobile",
+      "bullets": [
+        "Lead technique et mentorat sur l'architecture d'application mobile native",
+        "Amélioration des guides de codage, composants UI et logique métier",
+        "React Native, Okta, géorepérage, GraphQL, Firebase, MobX"
+      ]
+    },
+    "nordaStelo": {
+      "role": "Ingénieur logiciel senior",
+      "bullets": [
+        "Développement full-stack d'applications mobiles natives et web",
+        "Sécurité OAuth2 et principes Material Design pour l'interface",
+        "React Native avec Paper, applications web avec Ant Design et Vite"
+      ]
+    },
+    "levio": {
+      "role": "Ingénieur logiciel mobile",
+      "bullets": [
+        "Architecture et développement de l'application mobile native Beneva",
+        "POC Flutter et React Native, Auth0, Firebase, GraphQL, backend NestJS",
+        "Conception UI, authentification OAuth2, livraison Agile avec Jira"
+      ]
+    },
+    "upwave": {
+      "role": "Ingénieur logiciel full-stack",
+      "bullets": [
+        "Tableau de bord React/Redux de visualisation de données pour le marketing",
+        "Fonctionnalités self-serve avec tests frontend robustes (Cypress, Jest, RTL)",
+        "API backend Groovy, Grails, Spring Boot sur AWS (S3, DynamoDB)"
+      ]
+    },
+    "desjardins": {
+      "role": "Ingénieur logiciel full-stack",
+      "bullets": [
+        "Architecture et développement du système de gestion de recouvrement de prêts",
+        "Microservices RESTful (Spring Boot) avec frontend SPA (React, Angular)",
+        "OAuth2, RabbitMQ, Spring Batch, déploiement Pivotal Cloud Foundry"
+      ]
+    },
+    "acceoSolutions": {
+      "role": "Chef d'équipe de développement",
+      "bullets": [
+        "Chef d'équipe et ingénieur senior sur application web Spring + Jersey REST",
+        "Conception SPA Angular 4 et nouvelles APIs REST JSON pour les product owners",
+        "Livraison Agile, mentorat, pipeline CI Maven/Jenkins"
+      ]
+    }
   }
 }

@@ -198,5 +198,65 @@
     "success": "PDF resume generated",
     "error": "Failed to generate PDF resume",
     "exportFileDescription": "Saved as {{filename}}"
+  },
+  "experience": {
+    "lichensInnovation": {
+      "role": "Senior Software Engineer",
+      "bullets": [
+        "Industrial AI solutions for mining & metallurgy: computer vision, RAG, MCP tooling",
+        "Real-time CV pipelines (Mask R-CNN), semantic code search, on-device mobile RAG",
+        "Technology advisor — practical, reliable AI tools for industry stakeholders",
+        "Mobile field app (Expo): MJPEG live view, native streamer, real-time 3D pipe tracking (Three.js, WebSocket)",
+        "Manufacture QA app: auto inspections, cam/GPS diagnosis, PDF/Excel export, OTA & factory provisioning"
+      ]
+    },
+    "thirdbridge": {
+      "role": "Mobile Engineer",
+      "bullets": [
+        "Technical lead & mentoring on native mobile app architecture",
+        "Improved coding guidelines, UI components, and business logic implementation",
+        "React Native, Okta, geofencing, GraphQL, Firebase, MobX"
+      ]
+    },
+    "nordaStelo": {
+      "role": "Senior Software Engineer",
+      "bullets": [
+        "Full-stack development of native mobile and web applications",
+        "OAuth2 security pattern and Material Design UI principles",
+        "React Native with Paper, web apps with Ant Design and Vite"
+      ]
+    },
+    "levio": {
+      "role": "Mobile Software Engineer",
+      "bullets": [
+        "Architecture and development of the Beneva native mobile application",
+        "Flutter & React Native POCs, Auth0, Firebase, GraphQL, NestJS backend",
+        "UI design, OAuth2 authentication, Agile delivery with Jira"
+      ]
+    },
+    "upwave": {
+      "role": "Full-stack Software Engineer",
+      "bullets": [
+        "React/Redux data-visualization dashboard for marketing budget decisions",
+        "Self-serve features with robust frontend testing (Cypress, Jest, RTL)",
+        "Backend API with Groovy, Grails, Spring Boot on AWS (S3, DynamoDB)"
+      ]
+    },
+    "desjardins": {
+      "role": "Full Stack Software Engineer",
+      "bullets": [
+        "Architecture and development of loan recovery management system",
+        "RESTful microservices (Spring Boot) with SPA frontend (React, Angular)",
+        "OAuth2, RabbitMQ, Spring Batch, Pivotal Cloud Foundry deployment"
+      ]
+    },
+    "acceoSolutions": {
+      "role": "Development Team Lead",
+      "bullets": [
+        "Team lead and senior engineer on Spring + Jersey REST web application",
+        "Designed SPA with Angular 4 and new REST JSON APIs for product owners",
+        "Agile delivery, mentoring, Maven/Jenkins CI pipeline"
+      ]
+    }
   }
 }

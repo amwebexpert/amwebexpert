@@ -251,7 +251,7 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
   doc.setFontSize(12);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(pr, pg, pb);
-  const role = isFr ? EXPERIENCE_ENTRIES[0].roleFr : EXPERIENCE_ENTRIES[0].role;
+  const role = t(`experience:${EXPERIENCE_ENTRIES[0].key}.role`, locale);
   const roleLabel = `${role} — ${EXPERIENCE_ENTRIES[0].company}`;
   doc.text(roleLabel, centerX, y, { align: "center" });
 
@@ -347,7 +347,6 @@ const TIMELINE_CX = LOGO_BOX / 2;
 const CONTENT_OFFSET = LOGO_BOX + 0.18;
 
 const addExperienceSection = async (generator: PdfGenerator, locale: string): Promise<void> => {
-  const isFr = locale === "fr";
   const doc = generator.getDoc();
   const { margin, availableWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
@@ -388,7 +387,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(18, 22, 40);
-    doc.text(isFr ? entry.roleFr : entry.role, contentX, y);
+    doc.text(t(`experience:${entry.key}.role`, locale), contentX, y);
 
     // Company · Period
     y += 0.22;
@@ -402,7 +401,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setFontSize(8.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(48, 52, 65);
-    const bullets = isFr ? entry.bulletsFr : entry.bullets;
+    const bullets = t(`experience:${entry.key}.bullets`, locale, { returnObjects: true }) as string[];
 
     for (const bullet of bullets) {
       const lines = doc.splitTextToSize(`• ${bullet}`, contentWidth) as string[];

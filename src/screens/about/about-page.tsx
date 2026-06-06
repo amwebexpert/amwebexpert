@@ -192,14 +192,14 @@ export const AboutPage: FunctionComponent = () => {
             content: (
               <div>
                 <Text strong style={{ display: "block" }}>
-                  {isFrench ? entry.roleFr : entry.role}
+                  {t(`experience:${entry.key}.role`)}
                 </Text>
                 <Text style={{ fontSize: 13, display: "block" }}>
                   {entry.company}
                   <Text type="secondary"> · {entry.period}</Text>
                 </Text>
                 <ul style={{ paddingLeft: 20, margin: "8px 0", fontSize: 13 }}>
-                  {(isFrench ? entry.bulletsFr : entry.bullets).map((bullet) => (
+                  {(t(`experience:${entry.key}.bullets`, { returnObjects: true }) as string[]).map((bullet) => (
                     <li key={bullet} style={{ marginBottom: 4 }}>
                       <Text type="secondary">{bullet}</Text>
                     </li>
