@@ -5,7 +5,8 @@ import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import { FadeInItem } from "~/components/fade-in-item";
 import { EDUCATION_ENTRIES } from "./education.data";
-import { ExperienceCompanyLogo, experienceLogoSize } from "./experience-company-logo";
+import { ExperienceCompanyLogo } from "./experience-company-logo";
+import { EXPERIENCE_LOGO_SIZE } from "./experience-company-logo.constants";
 import { EXPERIENCE_ENTRIES } from "./experience.data";
 import { PUBLICATION_ENTRIES } from "./publications.data";
 import { TESTIMONIAL_ENTRIES } from "./testimonials.data";
@@ -13,8 +14,8 @@ import { TESTIMONIAL_ENTRIES } from "./testimonials.data";
 const { Title, Paragraph, Text } = Typography;
 
 /** Offsets timeline icon to align with the first content line (role title). */
-const experienceIconTopOffset = Math.round((experienceLogoSize - 22) / 2);
-const experienceRailTop = experienceLogoSize + experienceIconTopOffset;
+const experienceIconTopOffset = Math.round((EXPERIENCE_LOGO_SIZE - 22) / 2);
+const experienceRailTop = EXPERIENCE_LOGO_SIZE + experienceIconTopOffset;
 
 const EXPERTISE_ITEMS = [
   "Mobile app architecture & development (Flutter, React Native)",
@@ -166,15 +167,15 @@ export const AboutPage: FunctionComponent = () => {
             ),
             styles: {
               root: {
-                ["--ant-cmp-steps-icon-size" as string]: `${experienceLogoSize}px`,
-                ["--ant-cmp-steps-icon-size-max" as string]: `${experienceLogoSize}px`,
-                ["--ant-cmp-steps-icon-size-active" as string]: `${experienceLogoSize}px`,
+                ["--ant-cmp-steps-icon-size" as string]: `${EXPERIENCE_LOGO_SIZE}px`,
+                ["--ant-cmp-steps-icon-size-max" as string]: `${EXPERIENCE_LOGO_SIZE}px`,
+                ["--ant-cmp-steps-icon-size-active" as string]: `${EXPERIENCE_LOGO_SIZE}px`,
               },
               icon: {
-                width: experienceLogoSize,
-                height: experienceLogoSize,
-                minWidth: experienceLogoSize,
-                lineHeight: `${experienceLogoSize}px`,
+                width: EXPERIENCE_LOGO_SIZE,
+                height: EXPERIENCE_LOGO_SIZE,
+                minWidth: EXPERIENCE_LOGO_SIZE,
+                lineHeight: `${EXPERIENCE_LOGO_SIZE}px`,
                 flexShrink: 0,
                 background: "none",
                 border: "none",

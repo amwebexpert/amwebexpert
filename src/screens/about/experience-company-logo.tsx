@@ -1,7 +1,6 @@
 import type { FunctionComponent } from "react";
 import { useThemeMode } from "../../store/ui-preferences.store";
-
-const LOGO_SIZE = 81;
+import { EXPERIENCE_LOGO_SIZE } from "./experience-company-logo.constants";
 
 /** Fixed surfaces paired with theme-specific logo assets. */
 const LOGO_SURFACES = {
@@ -22,8 +21,6 @@ type ExperienceCompanyLogoProps = {
   size?: number;
 };
 
-export const experienceLogoSize = LOGO_SIZE;
-
 const resolveLogoSrc = (logoLight: string, logoDark: string, themeMode: "light" | "dark") => {
   const path = themeMode === "dark" ? logoDark : logoLight;
   return `${import.meta.env.BASE_URL}${path}`;
@@ -33,7 +30,7 @@ export const ExperienceCompanyLogo: FunctionComponent<ExperienceCompanyLogoProps
   logoLight,
   logoDark,
   alt,
-  size = LOGO_SIZE,
+  size = EXPERIENCE_LOGO_SIZE,
 }) => {
   const themeMode = useThemeMode();
   const { background, border } = LOGO_SURFACES[themeMode];
