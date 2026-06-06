@@ -15,7 +15,7 @@ export const HeroSection: FunctionComponent = () => {
 
   return (
     <div
-      className="hero-gradient"
+      className="hero-section"
       style={{
         textAlign: "center",
         padding: "80px 24px 64px",

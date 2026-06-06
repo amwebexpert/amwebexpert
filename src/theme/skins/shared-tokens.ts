@@ -5,6 +5,8 @@ export const SHARED_TOKENS = {
   fontSize: 14,
   fontSizeSM: 12,
   fontSizeLG: 16,
+  fontFamily: "'Outfit', system-ui, -apple-system, sans-serif",
+  fontFamilyCode: "'JetBrains Mono', 'Fira Code', monospace",
   lineHeight: 1.6,
   padding: 16,
   paddingSM: 12,

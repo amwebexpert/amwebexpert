@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { App as AntDesignAppWrapper, ConfigProvider } from "antd";
 import "antd/dist/reset.css";
 import type { PropsWithChildren } from "react";
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { useCurrentLocale } from "./i18n/use-current-locale";
 import { useThemeMode } from "./store/ui-preferences.store";
 import { getThemeConfig } from "./theme/app-theme";
@@ -16,6 +16,10 @@ const queryClient = new QueryClient({
 export const AppProviders = ({ children }: PropsWithChildren) => {
   const locale = useCurrentLocale();
   const mode = useThemeMode();
+
+  useEffect(() => {
+    document.body.dataset.theme = mode;
+  }, [mode]);
 
   return (
     <StrictMode>

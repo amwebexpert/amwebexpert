@@ -1,18 +1,65 @@
-/* Always show scrollbar for consistent layout */
+/* =====================================================================
+   BODY — smooth theme switch
+   ===================================================================== */
+body {
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+/* =====================================================================
+   TYPOGRAPHY — Fraunces for all headings
+   Ant Design v6 renders <h1 class="ant-typography"> for Typography.Title.
+   Both selector forms cover all usage patterns.
+   ===================================================================== */
+h1,
+h2,
+h3,
+h4,
+h1.ant-typography,
+h2.ant-typography,
+h3.ant-typography,
+h4.ant-typography {
+  font-family: "Fraunces", Georgia, serif !important;
+  letter-spacing: -0.02em;
+}
+
+/* =====================================================================
+   SCROLLBAR — theme-aware
+   ===================================================================== */
 .always-show-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
 
-.always-show-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
+[data-theme="light"] .always-show-scrollbar::-webkit-scrollbar-track {
+  background: #ede9e0;
 }
 
-.always-show-scrollbar::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+[data-theme="light"] .always-show-scrollbar::-webkit-scrollbar-thumb {
+  background: #c4bdb4;
   border-radius: 4px;
 }
 
-/* Left-aligned active bar on nav menu */
+[data-theme="dark"] .always-show-scrollbar::-webkit-scrollbar-track {
+  background: #1b1e2d;
+}
+
+[data-theme="dark"] .always-show-scrollbar::-webkit-scrollbar-thumb {
+  background: #2d3147;
+  border-radius: 4px;
+}
+
+[data-theme="light"] .always-show-scrollbar {
+  scrollbar-color: #c4bdb4 #ede9e0;
+  scrollbar-width: thin;
+}
+
+[data-theme="dark"] .always-show-scrollbar {
+  scrollbar-color: #2d3147 #1b1e2d;
+  scrollbar-width: thin;
+}
+
+/* =====================================================================
+   NAV MENU — left-aligned active bar
+   ===================================================================== */
 .app-nav-menu.ant-menu-inline .ant-menu-item::after {
   inset-inline-end: auto;
   inset-inline-start: 0;
@@ -20,7 +67,37 @@
   border-inline-start: 3px solid var(--ant-color-primary);
 }
 
-/* Hero tech badges: staggered fade-in animation */
+/* =====================================================================
+   HERO SECTION — theme-aware animated gradient
+   Replace old .hero-gradient with theme-specific variants.
+   ===================================================================== */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(-45deg, #0c0e14, #0f1629, #0c0e14, #151029);
+  background-size: 400% 400%;
+  animation: gradientShift 14s ease infinite;
+}
+
+[data-theme="light"] .hero-section {
+  background: linear-gradient(-45deg, #f8f6f2, #eef2f8, #f8f6f2, #f4f1eb);
+  background-size: 400% 400%;
+  animation: gradientShift 14s ease infinite;
+}
+
+/* =====================================================================
+   HERO TECH BADGES — staggered fade-in + hover lift
+   ===================================================================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -32,26 +109,40 @@
   }
 }
 
-/* Typewriter cursor blink */
+[data-theme="dark"] .hero-section .ant-tag {
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+[data-theme="dark"] .hero-section .ant-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.3);
+  background: rgba(34, 211, 238, 0.08) !important;
+}
+
+[data-theme="light"] .hero-section .ant-tag {
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+[data-theme="light"] .hero-section .ant-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(30, 58, 95, 0.15);
+  background: rgba(30, 58, 95, 0.06) !important;
+}
+
+/* =====================================================================
+   TYPEWRITER CURSOR
+   ===================================================================== */
 @keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .typewriter-cursor {
   animation: cursorBlink 1s step-end infinite;
   font-weight: 300;
-}
-
-/* Hero gradient background animation */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.hero-gradient {
-  background: linear-gradient(-45deg, #0d1117, #0f1f3d, #0d1117, #1a1040);
-  background-size: 400% 400%;
-  animation: gradientShift 12s ease infinite;
 }
