@@ -48,6 +48,10 @@ export const CV_LIGHT_THEME: ThemeConfig = {
       itemSelectedBg: "#edf2f9",
       itemSelectedColor: "#1e3a5f",
     },
+    Tooltip: {
+      colorBgSpotlight: "#1a1814",
+      colorTextLightSolid: "#ffffff",
+    },
   },
 };
 
