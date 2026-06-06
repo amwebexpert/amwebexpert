@@ -124,7 +124,54 @@
     "cv": "Computer Vision",
     "parsing": "Code Parsing & Analysis",
     "protocols": "AI Protocols",
-    "mobileAI": "On-device / Mobile AI"
+    "mobileAI": "On-device / Mobile AI",
+    "projects": {
+      "grizzlyDetector": {
+        "title": "Grizzly Detector",
+        "company": "Lichens Innovation",
+        "description": "Real-time computer vision service for industrial equipment monitoring in mining environments.",
+        "bullets": [
+          "Mask R-CNN (ResNet-50 + FPN) for multi-class instance segmentation: rock, metal mesh, metal bar, rock pile",
+          "Async pipeline: WebSocket video frames ==> PyTorch inference ==> SVG polygon output ==> React UI",
+          "Automatic hardware selection: Apple Silicon MPS / NVIDIA CUDA / CPU fallback",
+          "Configurable confidence threshold, real-time frame processing"
+        ]
+      },
+      "codeCrawler": {
+        "title": "Code Crawler",
+        "company": "Lichens Innovation",
+        "description": "MCP server for semantic code search across large Git repositories — fully local, zero cloud dependencies.",
+        "bullets": [
+          "Jina Embeddings v2 (Transformers.js) + hybrid search: vector KNN + BM25/FTS5 with RRF fusion",
+          "Jina Reranker cross-encoder for precision reranking, RAG generation via Qwen2.5 Coder 1.5B",
+          "AST-aligned chunking via tree-sitter (TypeScript, Python, C++, C#) with call graph enrichment",
+          "MCP + REST + static UI, SQLite + sqlite-vec in-process — no external services",
+          "Integrated with Claude Code and Cursor via Model Context Protocol"
+        ]
+      },
+      "offlineRagApp": {
+        "title": "Offline RAG App",
+        "company": "Lichens Innovation",
+        "description": "Mobile application with complete RAG pipeline running entirely on-device — no internet, no cloud.",
+        "bullets": [
+          "MULTI_QA_MINILM multilingual embeddings + Qwen3 0.6B quantized LLM via ExecutorTorch",
+          "PDF ingestion, text extraction, chunking (800 tokens / 150 overlap), cosine similarity search",
+          "Multi-turn RAG chat with context injection from semantic search results",
+          "Voice recognition for hands-free queries, biometric auth, FR/EN bilingual"
+        ]
+      },
+      "telegramAssistant": {
+        "title": "Personal Telegram Assistant",
+        "company": "Personal project",
+        "description": "Personal AI assistant powered by Claude Agent SDK, reachable over Telegram with Gmail, Calendar and web search via Zapier MCP.",
+        "bullets": [
+          "Claude Agent SDK as the AI backbone with persistent session memory stored per user profile",
+          "External actions (Gmail, Google Calendar, web search) through Zapier MCP — no custom connector code",
+          "Read/write access to local filesystem; multi-user support via per-user .env profiles + PM2 process manager",
+          "Deployable as a background service with auto-restart on login and structured logging via Pino"
+        ]
+      }
+    }
   },
   "demos": {
     "title": "Demos",

@@ -1,13 +1,12 @@
 import { yieldToMainThread } from "@lichens-innovation/ts-common";
-import { DEFAULT_THEME, PdfGenerator, type ThemeConfig } from "@lichens-innovation/ts-common/pdf";
+import { DEFAULT_OPTIONS, DEFAULT_THEME, PdfGenerator, type ThemeConfig } from "@lichens-innovation/ts-common/pdf";
 import { fetchUrlAsDataUri } from "@lichens-innovation/ts-common/web";
 import i18next from "i18next";
 import { autoTable } from "jspdf-autotable";
-import { AI_PROJECTS } from "~/screens/ai/ai-page";
+import { AI_PROJECT_ENTRIES } from "~/screens/ai/ai-projects.data";
 import { EDUCATION_ENTRIES } from "~/screens/about/education.data";
 import { EXPERIENCE_ENTRIES } from "~/screens/about/experience.data";
 import { OPENSOURCE_PROJECT_ENTRIES } from "~/screens/achievements/opensource-projects.data";
-import { TECH_CATEGORIES } from "~/screens/technologies/technologies-page";
 import { buildResumePdfIconDataUri, RESUME_PDF_CONTACT_ICON_PATHS } from "./resume-pdf-icons.utils";
 
 export interface GenerateResumePdfArgs {
@@ -28,22 +27,28 @@ type JsPdfDoc = ReturnType<PdfGenerator["getDoc"]>;
 // Helpers
 // ---------------------------------------------------------------------------
 
-const rasterizeSvgToPng = (svg: string, size = 256): Promise<string> =>
+const rasterizeSvgToPng = (svg: string, maxSize = 256): Promise<string> =>
   new Promise((resolve, reject) => {
     const img = new Image();
     const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
     const objectUrl = URL.createObjectURL(blob);
     img.onload = () => {
+      const aspectRatio = img.naturalWidth / img.naturalHeight;
+      const [canvasW, canvasH] =
+        aspectRatio >= 1
+          ? [maxSize, Math.round(maxSize / aspectRatio)]
+          : [Math.round(maxSize * aspectRatio), maxSize];
+
       const canvas = document.createElement("canvas");
-      canvas.width = size;
-      canvas.height = size;
+      canvas.width = canvasW;
+      canvas.height = canvasH;
       const ctx = canvas.getContext("2d");
       if (!ctx) {
         URL.revokeObjectURL(objectUrl);
         reject(new Error("Canvas context unavailable"));
         return;
       }
-      ctx.drawImage(img, 0, 0, size, size);
+      ctx.drawImage(img, 0, 0, canvasW, canvasH);
       URL.revokeObjectURL(objectUrl);
       resolve(canvas.toDataURL("image/png"));
     };
@@ -54,13 +59,47 @@ const rasterizeSvgToPng = (svg: string, size = 256): Promise<string> =>
     img.src = objectUrl;
   });
 
-const loadLogoForPdf = async (relativePath: string): Promise<string> => {
+interface LogoForPdf {
+  dataUri: string;
+  width: number;
+  height: number;
+}
+
+const loadLogoForPdf = async (relativePath: string): Promise<LogoForPdf | null> => {
   const url = `${window.location.origin}${import.meta.env.BASE_URL}${relativePath}`;
-  if (relativePath.endsWith(".svg")) {
-    const svgText = await fetch(url).then((r) => r.text());
-    return rasterizeSvgToPng(svgText, 256);
+  const dataUri = relativePath.endsWith(".svg")
+    ? await fetch(url)
+        .then((r) => r.text())
+        .then((svgText) => rasterizeSvgToPng(svgText, 256))
+    : ((await fetchUrlAsDataUri(url)) ?? "");
+
+  if (!dataUri) return null;
+
+  const { width, height } = await getImageDimensions(dataUri);
+  return { dataUri, width, height };
+};
+
+const fitImageInBox = (
+  naturalWidth: number,
+  naturalHeight: number,
+  boxWidth: number,
+  boxHeight: number,
+): { offsetX: number; offsetY: number; width: number; height: number } => {
+  const aspectRatio = naturalWidth / naturalHeight;
+  let width = boxWidth;
+  let height = boxWidth / aspectRatio;
+
+  if (height > boxHeight) {
+    height = boxHeight;
+    width = boxHeight * aspectRatio;
   }
-  return (await fetchUrlAsDataUri(url)) ?? "";
+
+  return {
+    offsetX: (boxWidth - width) / 2,
+    offsetY: (boxHeight - height) / 2,
+    width,
+    height,
+  };
 };
 
 interface DrawPillBadgesArgs {
@@ -313,7 +352,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
 
   addSectionTitle(generator, t("aboutPage:experienceTitle", locale));
 
-  const logoDataUris = await Promise.all(
+  const logos = await Promise.all(
     EXPERIENCE_ENTRIES.map((entry) => loadLogoForPdf(entry.logoLight)),
   );
 
@@ -322,7 +361,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     const entryY = generator.currentY;
     const contentX = margin + CONTENT_OFFSET;
     const contentWidth = availableWidth - CONTENT_OFFSET;
-    const logoDataUri = logoDataUris[index];
+    const logo = logos[index];
 
     // Logo box — white fill + primary border
     doc.setFillColor(255, 255, 255);
@@ -330,8 +369,16 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setLineWidth(0.012);
     doc.roundedRect(margin, entryY, LOGO_BOX, LOGO_BOX, 0.06, 0.06, "FD");
 
-    if (logoDataUri) {
-      doc.addImage(logoDataUri, "PNG", margin + LOGO_IMG_PAD, entryY + LOGO_IMG_PAD, LOGO_IMG, LOGO_IMG);
+    if (logo) {
+      const fit = fitImageInBox(logo.width, logo.height, LOGO_IMG, LOGO_IMG);
+      doc.addImage(
+        logo.dataUri,
+        "PNG",
+        margin + LOGO_IMG_PAD + fit.offsetX,
+        entryY + LOGO_IMG_PAD + fit.offsetY,
+        fit.width,
+        fit.height,
+      );
     }
 
     // Role
@@ -357,7 +404,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
 
     for (const bullet of bullets) {
       const lines = doc.splitTextToSize(`• ${bullet}`, contentWidth) as string[];
-      doc.text(lines, contentX, y);
+      lines.forEach((line, i) => doc.text(line, contentX, y + i * 0.185));
       y += lines.length * 0.185;
     }
 
@@ -395,6 +442,12 @@ const addEducationSection = (generator: PdfGenerator, locale: string): void => {
 
   addSectionTitle(generator, t("aboutPage:educationTitle", locale));
 
+  const educationColWeights = [3.1, 3.0, 1.4] as const;
+  const educationColWeightSum = educationColWeights.reduce((sum, weight) => sum + weight, 0);
+  const [degreeColWidth, schoolColWidth, yearsColWidth] = educationColWeights.map(
+    (weight) => (weight / educationColWeightSum) * availableWidth,
+  );
+
   autoTable(doc, {
     startY: generator.currentY,
     margin: { left: margin, right: margin },
@@ -409,43 +462,15 @@ const addEducationSection = (generator: PdfGenerator, locale: string): void => {
     },
     alternateRowStyles: { fillColor: [247, 248, 252] },
     columnStyles: {
-      0: { fontStyle: "bold", cellWidth: 3.1, textColor: [18, 22, 40] },
-      1: { cellWidth: 3.0, textColor: [80, 85, 100] },
-      2: { cellWidth: 1.4, halign: "right", textColor: [pr, pg, pb], fontStyle: "bold" },
+      0: { fontStyle: "bold", cellWidth: degreeColWidth, textColor: [18, 22, 40] },
+      1: { cellWidth: schoolColWidth, textColor: [80, 85, 100] },
+      2: { cellWidth: yearsColWidth, halign: "right", textColor: [pr, pg, pb], fontStyle: "bold" },
     },
   });
 
   const finalY = (doc as unknown as { lastAutoTable?: { finalY?: number } }).lastAutoTable?.finalY;
   if (finalY !== undefined) {
     generator.setCurrentY(finalY + 0.15);
-  }
-};
-
-// ---------------------------------------------------------------------------
-// Technologies — tinted category bands + inline pills
-// ---------------------------------------------------------------------------
-
-const addTechnologiesSection = (generator: PdfGenerator, locale: string): void => {
-  const doc = generator.getDoc();
-  const { margin, availableWidth } = generator;
-  const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
-
-  addSectionTitle(generator, t("technologies:title", locale));
-
-  for (const { key, techs } of TECH_CATEGORIES) {
-    ensureSpace(generator, 0.65);
-    const y = generator.currentY;
-    const bandH = 0.21;
-
-    doc.setFontSize(8.5);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(pr, pg, pb);
-    doc.text(t(`technologies:${key}`, locale), margin, y + bandH / 2 + 8.5 / 72 / 2);
-
-    const pillsStartY = y + bandH + 0.19;
-    const newY = drawPillBadges({ doc, tags: techs, startX: margin, y: pillsStartY, availableWidth });
-
-    generator.setCurrentY(newY + 0.12);
   }
 };
 
@@ -463,7 +488,7 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
 
   addSectionTitle(generator, t("achievements:title", locale));
 
-  const logoDataUris = await Promise.all(
+  const logos = await Promise.all(
     OPENSOURCE_PROJECT_ENTRIES.map(({ logo }) => loadLogoForPdf(logo)),
   );
 
@@ -472,15 +497,24 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
     const entryY = generator.currentY;
     const contentX = margin + CARD_CONTENT_X;
     const contentWidth = availableWidth - CARD_CONTENT_X;
-    const logoDataUri = logoDataUris[index];
+    const logo = logos[index];
 
     // Logo thumbnail with border
     doc.setDrawColor(210, 213, 225);
     doc.setLineWidth(0.008);
     doc.roundedRect(margin, entryY, CARD_LOGO, CARD_LOGO, 0.05, 0.05, "S");
-    if (logoDataUri) {
+    if (logo) {
       const pad = 0.05;
-      doc.addImage(logoDataUri, "PNG", margin + pad, entryY + pad, CARD_LOGO - pad * 2, CARD_LOGO - pad * 2);
+      const innerSize = CARD_LOGO - pad * 2;
+      const fit = fitImageInBox(logo.width, logo.height, innerSize, innerSize);
+      doc.addImage(
+        logo.dataUri,
+        "PNG",
+        margin + pad + fit.offsetX,
+        entryY + pad + fit.offsetY,
+        fit.width,
+        fit.height,
+      );
     }
 
     // Title
@@ -507,7 +541,7 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
       t(`achievements:projects.${key}.description`, locale),
       contentWidth,
     ) as string[];
-    doc.text(descLines, contentX, y);
+    descLines.forEach((line, i) => doc.text(line, contentX, y + i * 0.168));
     y += descLines.length * 0.168;
 
     // Tags
@@ -535,22 +569,23 @@ const addAiSection = (generator: PdfGenerator, locale: string): void => {
 
   addSectionTitle(generator, t("ai:title", locale));
 
-  for (const project of AI_PROJECTS) {
+  for (const { key, tags } of AI_PROJECT_ENTRIES) {
     ensureSpace(generator, 1.1);
     const entryY = generator.currentY;
     let y = entryY;
+    const company = t(`ai:projects.${key}.company`, locale);
 
     // Title + Company row
     doc.setFontSize(9.5);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(18, 22, 40);
-    doc.text(project.title, margin, y + 0.17);
+    doc.text(t(`ai:projects.${key}.title`, locale), margin, y + 0.17);
 
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(105, 110, 125);
-    const companyW = doc.getTextWidth(project.company);
-    doc.text(project.company, margin + availableWidth - companyW, y + 0.17);
+    const companyW = doc.getTextWidth(company);
+    doc.text(company, margin + availableWidth - companyW, y + 0.17);
 
     y += 0.34;
 
@@ -558,22 +593,26 @@ const addAiSection = (generator: PdfGenerator, locale: string): void => {
     doc.setFontSize(8.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(48, 52, 65);
-    const descLines = doc.splitTextToSize(project.description, availableWidth) as string[];
-    doc.text(descLines, margin, y);
+    const descLines = doc.splitTextToSize(
+      t(`ai:projects.${key}.description`, locale),
+      availableWidth,
+    ) as string[];
+    descLines.forEach((line, i) => doc.text(line, margin, y + i * 0.178));
     y += descLines.length * 0.178;
 
     // Bullets
     y += 0.07;
     doc.setFontSize(8);
-    for (const bullet of project.bullets) {
+    const bullets = t(`ai:projects.${key}.bullets`, locale, { returnObjects: true }) as unknown as string[];
+    for (const bullet of bullets) {
       const lines = doc.splitTextToSize(`• ${bullet}`, availableWidth) as string[];
-      doc.text(lines, margin, y);
+      lines.forEach((line, i) => doc.text(line, margin, y + i * 0.175));
       y += lines.length * 0.175;
     }
 
     // Tags
     y += 0.1;
-    y = drawPillBadges({ doc, tags: project.tags, startX: margin, y, availableWidth });
+    y = drawPillBadges({ doc, tags, startX: margin, y, availableWidth });
 
     // Separator
     doc.setDrawColor(215, 218, 228);
@@ -582,43 +621,6 @@ const addAiSection = (generator: PdfGenerator, locale: string): void => {
 
     generator.setCurrentY(y + 0.22);
   }
-};
-
-// ---------------------------------------------------------------------------
-// Contact
-// ---------------------------------------------------------------------------
-
-const addContactSection = (generator: PdfGenerator, locale: string): void => {
-  const doc = generator.getDoc();
-  const { margin, availableWidth } = generator;
-  const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
-  const isFr = locale === "fr";
-
-  addSectionTitle(generator, t("contact:title", locale));
-
-  autoTable(doc, {
-    startY: generator.currentY,
-    margin: { left: margin, right: margin },
-    tableWidth: availableWidth,
-    theme: "plain",
-    body: [
-      [isFr ? "Courriel" : "Email", "amwebexpert@gmail.com"],
-      ["LinkedIn", "https://www.linkedin.com/in/amwebexpert/"],
-      ["GitHub", "https://github.com/amwebexpert"],
-      [isFr ? "Localisation" : "Location", "Montréal, Québec, Canada"],
-    ],
-    bodyStyles: {
-      fontSize: 9,
-      cellPadding: { top: 0.08, bottom: 0.08, left: 0.1, right: 0.1 },
-      lineWidth: { bottom: 0.006 },
-      lineColor: [215, 218, 228],
-    },
-    alternateRowStyles: { fillColor: [247, 248, 252] },
-    columnStyles: {
-      0: { cellWidth: 1.5, fontStyle: "bold", textColor: [pr, pg, pb] },
-      1: { cellWidth: 6.0, textColor: [48, 52, 65] },
-    },
-  });
 };
 
 // ---------------------------------------------------------------------------
@@ -636,31 +638,61 @@ type ResumeFooterCellBuilder = (args: {
   totalPages: number;
 }) => string;
 
-const renderResumeFooters = (generator: PdfGenerator, footerCellBuilder: ResumeFooterCellBuilder): void => {
+const renderResumeFooters = async (
+  generator: PdfGenerator,
+  footerCellBuilder: ResumeFooterCellBuilder,
+): Promise<void> => {
   const doc = generator.getDoc();
   const totalPages = doc.getNumberOfPages();
+  const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
+  const iconColor = `rgb(${pr}, ${pg}, ${pb})`;
+
+  const [mailIconUri, githubIconUri] = await Promise.all([
+    buildResumePdfIconDataUri(RESUME_PDF_CONTACT_ICON_PATHS.mail, iconColor),
+    buildResumePdfIconDataUri(RESUME_PDF_CONTACT_ICON_PATHS.github, iconColor),
+  ]);
+
   const cellWidth = generator.availableWidth / 3;
-  const columnStyles = {
-    0: { cellWidth, halign: "left" as const },
-    1: { cellWidth, halign: "center" as const },
-    2: { cellWidth, halign: "right" as const },
-  };
   const startY = generator.pageHeight - generator.margin - generator.footerHeight;
+  const textY = startY + generator.footerHeight * 0.65;
+  const iconSize = 0.11;
+  const iconGap = 0.05;
+  const iconY = textY - iconSize * 0.78;
 
   for (let currentPage = 2; currentPage <= totalPages; currentPage++) {
     doc.setPage(currentPage);
-    const footerCells = (["left", "center", "right"] as const).map((align) => ({
-      content: footerCellBuilder({ align, currentPage, totalPages }),
-    }));
 
-    autoTable(doc, {
-      startY,
-      body: [footerCells],
-      theme: "plain",
-      bodyStyles: { fontSize: generator.footerFontSizePoints, font: generator.font },
-      margin: { left: generator.margin, right: generator.margin },
-      columnStyles,
-    });
+    // Thin separator line above footer
+    doc.setDrawColor(200, 203, 215);
+    doc.setLineWidth(0.007);
+    doc.line(generator.margin, startY, generator.margin + generator.availableWidth, startY);
+
+    doc.setFontSize(generator.footerFontSizePoints);
+    doc.setFont(generator.font, "normal");
+    doc.setTextColor(80, 85, 100);
+
+    // Left: mail icon + email hyperlink
+    const emailLabel = "amwebexpert@gmail.com";
+    const emailUrl = "mailto:amwebexpert@gmail.com";
+    doc.addImage(mailIconUri, "PNG", generator.margin, iconY, iconSize, iconSize);
+    doc.link(generator.margin, iconY, iconSize, iconSize, { url: emailUrl });
+    doc.textWithLink(emailLabel, generator.margin + iconSize + iconGap, textY, { url: emailUrl });
+
+    // Center: github icon + github link (centered in middle third)
+    const ghLabel = "github.com/amwebexpert";
+    const ghUrl = "https://github.com/amwebexpert";
+    const ghTextWidth = doc.getTextWidth(ghLabel);
+    const ghRowWidth = iconSize + iconGap + ghTextWidth;
+    const centerX = generator.margin + cellWidth * 1.5;
+    const ghRowLeft = centerX - ghRowWidth / 2;
+    doc.addImage(githubIconUri, "PNG", ghRowLeft, iconY, iconSize, iconSize);
+    doc.link(ghRowLeft, iconY, iconSize, iconSize, { url: ghUrl });
+    doc.textWithLink(ghLabel, ghRowLeft + iconSize + iconGap, textY, { url: ghUrl });
+
+    // Right: page number, right-aligned
+    const pageLabel = footerCellBuilder({ align: "right", currentPage, totalPages });
+    const pageTextWidth = doc.getTextWidth(pageLabel);
+    doc.text(pageLabel, generator.margin + generator.availableWidth - pageTextWidth, textY);
   }
 };
 
@@ -677,6 +709,7 @@ export const generateResumePdf = async ({ locale }: GenerateResumePdfArgs): Prom
   const generator = new PdfGenerator({
     filename,
     theme: RESUME_THEME,
+    margin: DEFAULT_OPTIONS.margin * 2,
     footerCellBuilder,
   });
 
@@ -691,24 +724,17 @@ export const generateResumePdf = async ({ locale }: GenerateResumePdfArgs): Prom
   addEducationSection(generator, locale);
   await yieldToMainThread();
 
-  // Technologies
-  startSection(generator);
-  addTechnologiesSection(generator, locale);
-  await yieldToMainThread();
-
-  // Achievements & AI
+  // Achievements
   startSection(generator);
   await addOpenSourceSection(generator, locale);
   await yieldToMainThread();
+
+  // Artificial Intelligence
+  startSection(generator);
   addAiSection(generator, locale);
   await yieldToMainThread();
 
-  // Contact
-  startSection(generator);
-  addContactSection(generator, locale);
-  await yieldToMainThread();
-
-  renderResumeFooters(generator, footerCellBuilder);
+  await renderResumeFooters(generator, footerCellBuilder);
   generator.save();
 
   return filename;

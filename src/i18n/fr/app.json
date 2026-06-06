@@ -124,7 +124,54 @@
     "cv": "Vision par ordinateur",
     "parsing": "Analyse & parsing de code",
     "protocols": "Protocoles IA",
-    "mobileAI": "IA On-device / Mobile"
+    "mobileAI": "IA On-device / Mobile",
+    "projects": {
+      "grizzlyDetector": {
+        "title": "Grizzly Detector",
+        "company": "Lichens Innovation",
+        "description": "Service de vision par ordinateur en temps réel pour la surveillance d'équipements industriels en environnement minier.",
+        "bullets": [
+          "Mask R-CNN (ResNet-50 + FPN) pour la segmentation d'instances multi-classes : roche, maille métallique, barre métallique, tas de roches",
+          "Pipeline asynchrone : trames vidéo WebSocket ==> inférence PyTorch ==> polygones SVG ==> interface React",
+          "Sélection matérielle automatique : Apple Silicon MPS / NVIDIA CUDA / repli CPU",
+          "Seuil de confiance configurable, traitement des images en temps réel"
+        ]
+      },
+      "codeCrawler": {
+        "title": "Code Crawler",
+        "company": "Lichens Innovation",
+        "description": "Serveur MCP pour la recherche sémantique de code dans de grands dépôts Git — entièrement local, sans dépendance cloud.",
+        "bullets": [
+          "Jina Embeddings v2 (Transformers.js) + recherche hybride : KNN vectoriel + BM25/FTS5 avec fusion RRF",
+          "Jina Reranker cross-encoder pour le reranking de précision, génération RAG via Qwen2.5 Coder 1.5B",
+          "Découpage aligné sur l'AST via tree-sitter (TypeScript, Python, C++, C#) avec enrichissement du graphe d'appels",
+          "MCP + REST + interface statique, SQLite + sqlite-vec en processus — aucun service externe",
+          "Intégré à Claude Code et Cursor via le Model Context Protocol"
+        ]
+      },
+      "offlineRagApp": {
+        "title": "Offline RAG App",
+        "company": "Lichens Innovation",
+        "description": "Application mobile avec pipeline RAG complet exécuté entièrement on-device — sans internet, sans cloud.",
+        "bullets": [
+          "Embeddings multilingues MULTI_QA_MINILM + LLM quantifié Qwen3 0.6B via ExecutorTorch",
+          "Ingestion PDF, extraction de texte, découpage (800 jetons / 150 chevauchement), recherche par similarité cosinus",
+          "Chat RAG multi-tours avec injection de contexte depuis les résultats de recherche sémantique",
+          "Reconnaissance vocale pour requêtes mains libres, authentification biométrique, bilingue FR/EN"
+        ]
+      },
+      "telegramAssistant": {
+        "title": "Personal Telegram Assistant",
+        "company": "Projet personnel",
+        "description": "Assistant IA personnel propulsé par Claude Agent SDK, accessible via Telegram avec Gmail, Calendrier et recherche web via Zapier MCP.",
+        "bullets": [
+          "Claude Agent SDK comme socle IA avec mémoire de session persistante par profil utilisateur",
+          "Actions externes (Gmail, Google Calendar, recherche web) via Zapier MCP — sans connecteur personnalisé",
+          "Accès lecture/écriture au système de fichiers local ; multi-utilisateurs via profils .env + gestionnaire de processus PM2",
+          "Déployable comme service en arrière-plan avec redémarrage auto à la connexion et journalisation structurée via Pino"
+        ]
+      }
+    }
   },
   "demos": {
     "title": "Démos",
