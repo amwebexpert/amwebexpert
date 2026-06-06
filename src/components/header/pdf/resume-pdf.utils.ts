@@ -319,6 +319,8 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
 // Section title (dark band, white text)
 // ---------------------------------------------------------------------------
 
+const SECTION_TITLE_HEIGHT = 0.42;
+
 const addSectionTitle = (generator: PdfGenerator, title: string): void => {
   const doc = generator.getDoc();
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
@@ -331,7 +333,7 @@ const addSectionTitle = (generator: PdfGenerator, title: string): void => {
   doc.text(title, margin, y + 0.15);
 
   doc.setTextColor(0, 0, 0);
-  generator.setCurrentY(y + 0.32);
+  generator.setCurrentY(y + SECTION_TITLE_HEIGHT);
 };
 
 // ---------------------------------------------------------------------------
