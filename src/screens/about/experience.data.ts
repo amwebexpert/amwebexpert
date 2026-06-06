@@ -25,7 +25,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
       "Pipelines CV temps réel (Mask R-CNN), recherche sémantique de code, RAG mobile on-device",
       "Conseiller technologique — outils IA pratiques et fiables pour l'industrie",
     ],
-    tags: ["PyTorch", "MCP", "RAG", "NestJS", "React Native"],
+    tags: ["PyTorch", "MCP", "RAG", "NestJS", "React Native", "TypeScript", "Tanstack", "Ant Design"],
     aiPageLink: true,
   },
   {
@@ -43,7 +43,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
       "Amélioration des guides de codage, composants UI et logique métier",
       "React Native, Okta, géorepérage, GraphQL, Firebase, MobX",
     ],
-    tags: ["React Native", "Okta", "GraphQL", "TypeScript"],
+    tags: ["React Native", "Okta", "GraphQL", "TypeScript", "Tanstack Query", "MobX"],
   },
   {
     company: "Norda Stelo",
@@ -60,7 +60,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
       "Sécurité OAuth2 et principes Material Design pour l'interface",
       "React Native avec Paper, applications web avec Ant Design et Vite",
     ],
-    tags: ["React Native", "Ant Design", "AWS Cognito", "Cypress"],
+    tags: ["React Native", "Ant Design", "AWS Cognito", "Cypress", "TypeScript", "Tanstack Query"],
   },
   {
     company: "Levio",
@@ -77,7 +77,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
       "POC Flutter et React Native, Auth0, Firebase, GraphQL, backend NestJS",
       "Conception UI, authentification OAuth2, livraison Agile avec Jira",
     ],
-    tags: ["Flutter", "React Native", "Auth0", "NestJS"],
+    tags: ["Flutter", "React Native", "Auth0", "NestJS", "TypeScript", "Tanstack Query"],
   },
   {
     company: "Upwave",
