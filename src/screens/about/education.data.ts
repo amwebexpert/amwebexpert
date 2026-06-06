@@ -1,9 +1,9 @@
-export type EducationEntry = {
+export interface EducationEntry {
   degree: string;
   degreeEn: string;
   school: string;
   years: string;
-};
+}
 
 export const EDUCATION_ENTRIES: EducationEntry[] = [
   {

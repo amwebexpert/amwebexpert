@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
+const FIVE_MINUTES_MS = 5 * 60 * 1000;
+
 export interface GitHubRepo {
   id: number;
   name: string;
@@ -26,5 +28,5 @@ export const useGitHubRepos = () =>
   useQuery({
     queryKey: ["github-repos"],
     queryFn: fetchGitHubRepos,
-    staleTime: 5 * 60 * 1000,
+    staleTime: FIVE_MINUTES_MS,
   });

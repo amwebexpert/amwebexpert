@@ -1,7 +1,7 @@
-export type PublicationEntry = {
+export interface PublicationEntry {
   titleKey: string;
   url: string;
-};
+}
 
 export const PUBLICATION_ENTRIES: PublicationEntry[] = [
   {

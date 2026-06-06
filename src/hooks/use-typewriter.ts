@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
 
+interface UseTypewriterArgs {
+  texts: string[];
+  speed?: number;
+  pauseDuration?: number;
+}
+
 interface UseTypewriterResult {
   displayText: string;
   isTyping: boolean;
 }
 
-export const useTypewriter = (texts: string[], speed = 80, pauseDuration = 1800): UseTypewriterResult => {
+export const useTypewriter = ({ texts, speed = 80, pauseDuration = 1800 }: UseTypewriterArgs): UseTypewriterResult => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   const targetText = texts[textIndex] ?? "";
   const displayText = targetText.slice(0, charIndex);
+
+  const textsLength = texts.length;
 
   useEffect(() => {
     if (!isDeleting && charIndex < targetText.length) {
@@ -31,11 +39,11 @@ export const useTypewriter = (texts: string[], speed = 80, pauseDuration = 1800)
 
     if (isDeleting && charIndex === 0) {
       setIsDeleting(false);
-      setTextIndex((i) => (i + 1) % texts.length);
+      setTextIndex((i) => (i + 1) % textsLength);
     }
 
     return undefined;
-  }, [charIndex, isDeleting, targetText, speed, pauseDuration, texts.length]);
+  }, [charIndex, isDeleting, targetText, speed, pauseDuration, textsLength]);
 
   return { displayText, isTyping: !isDeleting };
 };

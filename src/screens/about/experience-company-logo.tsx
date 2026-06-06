@@ -14,14 +14,20 @@ const LOGO_SURFACES = {
   },
 } as const;
 
-type ExperienceCompanyLogoProps = {
+interface ExperienceCompanyLogoProps {
   logoLight: string;
   logoDark: string;
   alt: string;
   size?: number;
-};
+}
 
-const resolveLogoSrc = (logoLight: string, logoDark: string, themeMode: "light" | "dark") => {
+interface ResolveLogoSrcArgs {
+  logoLight: string;
+  logoDark: string;
+  themeMode: "light" | "dark";
+}
+
+const resolveLogoSrc = ({ logoLight, logoDark, themeMode }: ResolveLogoSrcArgs): string => {
   const path = themeMode === "dark" ? logoDark : logoLight;
   return `${import.meta.env.BASE_URL}${path}`;
 };
@@ -37,7 +43,7 @@ export const ExperienceCompanyLogo: FunctionComponent<ExperienceCompanyLogoProps
 
   return (
     <img
-      src={resolveLogoSrc(logoLight, logoDark, themeMode)}
+      src={resolveLogoSrc({ logoLight, logoDark, themeMode })}
       alt={alt}
       width={size}
       height={size}

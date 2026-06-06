@@ -4,10 +4,10 @@ export type AiProjectKey =
   | "offlineRagApp"
   | "telegramAssistant";
 
-export type AiProjectEntry = {
+export interface AiProjectEntry {
   key: AiProjectKey;
   tags: string[];
-};
+}
 
 export const AI_PROJECT_ENTRIES: AiProjectEntry[] = [
   {

@@ -18,8 +18,14 @@ const RESUME_THEME: ThemeConfig = {
   primaryColor: { r: 30, g: 58, b: 95 },
 };
 
-const t = (key: string, locale: string, opts?: Record<string, unknown>) =>
-  i18next.t(key, { lng: locale, ...opts });
+interface TranslateArgs {
+  key: string;
+  locale: string;
+  opts?: Record<string, unknown>;
+}
+
+const t = ({ key, locale, opts }: TranslateArgs): string =>
+  i18next.t(key, { lng: locale, ...opts }) as string;
 
 type JsPdfDoc = ReturnType<PdfGenerator["getDoc"]>;
 
@@ -27,7 +33,12 @@ type JsPdfDoc = ReturnType<PdfGenerator["getDoc"]>;
 // Helpers
 // ---------------------------------------------------------------------------
 
-const rasterizeSvgToPng = (svg: string, maxSize = 256): Promise<string> =>
+interface RasterizeSvgToPngArgs {
+  svg: string;
+  maxSize?: number;
+}
+
+const rasterizeSvgToPng = ({ svg, maxSize = 256 }: RasterizeSvgToPngArgs): Promise<string> =>
   new Promise((resolve, reject) => {
     const img = new Image();
     const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
@@ -70,7 +81,7 @@ const loadLogoForPdf = async (relativePath: string): Promise<LogoForPdf | null> 
   const dataUri = relativePath.endsWith(".svg")
     ? await fetch(url)
         .then((r) => r.text())
-        .then((svgText) => rasterizeSvgToPng(svgText, 256))
+        .then((svgText) => rasterizeSvgToPng({ svg: svgText, maxSize: 256 }))
     : ((await fetchUrlAsDataUri(url)) ?? "");
 
   if (!dataUri) return null;
@@ -79,12 +90,21 @@ const loadLogoForPdf = async (relativePath: string): Promise<LogoForPdf | null> 
   return { dataUri, width, height };
 };
 
-const fitImageInBox = (
-  naturalWidth: number,
-  naturalHeight: number,
-  boxWidth: number,
-  boxHeight: number,
-): { offsetX: number; offsetY: number; width: number; height: number } => {
+interface FitImageInBoxArgs {
+  naturalWidth: number;
+  naturalHeight: number;
+  boxWidth: number;
+  boxHeight: number;
+}
+
+interface FitImageInBoxResult {
+  offsetX: number;
+  offsetY: number;
+  width: number;
+  height: number;
+}
+
+const fitImageInBox = ({ naturalWidth, naturalHeight, boxWidth, boxHeight }: FitImageInBoxArgs): FitImageInBoxResult => {
   const aspectRatio = naturalWidth / naturalHeight;
   let width = boxWidth;
   let height = boxWidth / aspectRatio;
@@ -142,7 +162,12 @@ const drawPillBadges = ({ doc, tags, startX, y, availableWidth }: DrawPillBadges
   return rowY + PILL_H * 0.5;
 };
 
-const ensureSpace = (generator: PdfGenerator, needed: number): void => {
+interface EnsureSpaceArgs {
+  generator: PdfGenerator;
+  needed: number;
+}
+
+const ensureSpace = ({ generator, needed }: EnsureSpaceArgs): void => {
   if (generator.currentY + needed > generator.pageHeight - generator.margin - generator.footerHeight) {
     generator.addPage();
     generator.setCurrentY(generator.margin);
@@ -161,14 +186,16 @@ const getImageDimensions = (dataUri: string): Promise<{ width: number; height: n
     img.src = dataUri;
   });
 
-const drawCircleClippedImage = (
-  doc: JsPdfDoc,
-  dataUri: string,
-  cx: number,
-  cy: number,
-  r: number,
-  aspectRatio: number,
-): void => {
+interface DrawCircleClippedImageArgs {
+  doc: JsPdfDoc;
+  dataUri: string;
+  cx: number;
+  cy: number;
+  r: number;
+  aspectRatio: number;
+}
+
+const drawCircleClippedImage = ({ doc, dataUri, cx, cy, r, aspectRatio }: DrawCircleClippedImageArgs): void => {
   const kappa = 0.5522847498;
   const ox = r * kappa;
   const oy = r * kappa;
@@ -197,14 +224,16 @@ const drawCircleClippedImage = (
   doc.restoreGraphicsState();
 };
 
-const drawCenteredContactLink = (
-  doc: JsPdfDoc,
-  centerX: number,
-  y: number,
-  iconDataUri: string,
-  label: string,
-  url: string,
-): void => {
+interface DrawCenteredContactLinkArgs {
+  doc: JsPdfDoc;
+  centerX: number;
+  y: number;
+  iconDataUri: string;
+  label: string;
+  url: string;
+}
+
+const drawCenteredContactLink = ({ doc, centerX, y, iconDataUri, label, url }: DrawCenteredContactLinkArgs): void => {
   const iconSize = 0.11;
   const iconGap = 0.06;
   const textWidth = doc.getTextWidth(label);
@@ -218,7 +247,12 @@ const drawCenteredContactLink = (
   doc.textWithLink(label, textX, y, { url });
 };
 
-const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<void> => {
+interface SectionArgs {
+  generator: PdfGenerator;
+  locale: string;
+}
+
+const drawCoverPage = async ({ generator, locale }: SectionArgs): Promise<void> => {
   const doc = generator.getDoc();
   const { margin, pageWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
@@ -234,7 +268,7 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
 
   if (profileDataUri) {
     const { width, height } = await getImageDimensions(profileDataUri);
-    drawCircleClippedImage(doc, profileDataUri, pictureCx, pictureCy, pictureRadius, width / height);
+    drawCircleClippedImage({ doc, dataUri: profileDataUri, cx: pictureCx, cy: pictureCy, r: pictureRadius, aspectRatio: width / height });
   }
 
   doc.setDrawColor(pr, pg, pb);
@@ -251,7 +285,7 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
   doc.setFontSize(12);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(pr, pg, pb);
-  const role = t(`experience:${EXPERIENCE_ENTRIES[0].key}.role`, locale);
+  const role = t({ key: `experience:${EXPERIENCE_ENTRIES[0].key}.role`, locale });
   const roleLabel = `${role} — ${EXPERIENCE_ENTRIES[0].company}`;
   doc.text(roleLabel, centerX, y, { align: "center" });
 
@@ -291,11 +325,11 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
   ] as const;
 
   const iconDataUris = await Promise.all(
-    contactLinks.map(({ iconPath }) => buildResumePdfIconDataUri(iconPath, iconColor)),
+    contactLinks.map(({ iconPath }) => buildResumePdfIconDataUri({ pathD: iconPath, color: iconColor })),
   );
 
   for (const [index, { label, url }] of contactLinks.entries()) {
-    drawCenteredContactLink(doc, centerX, y, iconDataUris[index], label, url);
+    drawCenteredContactLink({ doc, centerX, y, iconDataUri: iconDataUris[index], label, url });
     y += 0.2;
   }
 
@@ -305,13 +339,13 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(pr, pg, pb);
-  doc.text(t("aboutPage:summaryTitle", locale), centerX, y, { align: "center" });
+  doc.text(t({ key: "aboutPage:summaryTitle", locale }), centerX, y, { align: "center" });
 
   y += 0.22;
   doc.setFontSize(9);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(80, 80, 80);
-  const summaryLines = doc.splitTextToSize(t("aboutPage:summary", locale), summaryWidth) as string[];
+  const summaryLines = doc.splitTextToSize(t({ key: "aboutPage:summary", locale }), summaryWidth) as string[];
   doc.text(summaryLines, centerX, y, { align: "center" });
 };
 
@@ -321,7 +355,12 @@ const drawCoverPage = async (generator: PdfGenerator, locale: string): Promise<v
 
 const SECTION_TITLE_HEIGHT = 0.42;
 
-const addSectionTitle = (generator: PdfGenerator, title: string): void => {
+interface AddSectionTitleArgs {
+  generator: PdfGenerator;
+  title: string;
+}
+
+const addSectionTitle = ({ generator, title }: AddSectionTitleArgs): void => {
   const doc = generator.getDoc();
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
   const { margin } = generator;
@@ -346,19 +385,19 @@ const LOGO_IMG_PAD = (LOGO_BOX - LOGO_IMG) / 2;
 const TIMELINE_CX = LOGO_BOX / 2;
 const CONTENT_OFFSET = LOGO_BOX + 0.18;
 
-const addExperienceSection = async (generator: PdfGenerator, locale: string): Promise<void> => {
+const addExperienceSection = async ({ generator, locale }: SectionArgs): Promise<void> => {
   const doc = generator.getDoc();
   const { margin, availableWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
 
-  addSectionTitle(generator, t("aboutPage:experienceTitle", locale));
+  addSectionTitle({ generator, title: t({ key: "aboutPage:experienceTitle", locale }) });
 
   const logos = await Promise.all(
     EXPERIENCE_ENTRIES.map((entry) => loadLogoForPdf(entry.logoLight)),
   );
 
   for (const [index, entry] of EXPERIENCE_ENTRIES.entries()) {
-    ensureSpace(generator, 1.5);
+    ensureSpace({ generator, needed: 1.5 });
     const entryY = generator.currentY;
     const contentX = margin + CONTENT_OFFSET;
     const contentWidth = availableWidth - CONTENT_OFFSET;
@@ -371,7 +410,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.roundedRect(margin, entryY, LOGO_BOX, LOGO_BOX, 0.06, 0.06, "FD");
 
     if (logo) {
-      const fit = fitImageInBox(logo.width, logo.height, LOGO_IMG, LOGO_IMG);
+      const fit = fitImageInBox({ naturalWidth: logo.width, naturalHeight: logo.height, boxWidth: LOGO_IMG, boxHeight: LOGO_IMG });
       doc.addImage(
         logo.dataUri,
         "PNG",
@@ -387,7 +426,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(18, 22, 40);
-    doc.text(t(`experience:${entry.key}.role`, locale), contentX, y);
+    doc.text(t({ key: `experience:${entry.key}.role`, locale }), contentX, y);
 
     // Company · Period
     y += 0.22;
@@ -401,7 +440,7 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setFontSize(8.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(48, 52, 65);
-    const bullets = t(`experience:${entry.key}.bullets`, locale, { returnObjects: true }) as string[];
+    const bullets = t({ key: `experience:${entry.key}.bullets`, locale, opts: { returnObjects: true } }) as unknown as string[];
 
     for (const bullet of bullets) {
       const lines = doc.splitTextToSize(`• ${bullet}`, contentWidth) as string[];
@@ -435,13 +474,13 @@ const addExperienceSection = async (generator: PdfGenerator, locale: string): Pr
 // Education
 // ---------------------------------------------------------------------------
 
-const addEducationSection = (generator: PdfGenerator, locale: string): void => {
+const addEducationSection = ({ generator, locale }: SectionArgs): void => {
   const isFr = locale === "fr";
   const doc = generator.getDoc();
   const { margin, availableWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
 
-  addSectionTitle(generator, t("aboutPage:educationTitle", locale));
+  addSectionTitle({ generator, title: t({ key: "aboutPage:educationTitle", locale }) });
 
   const educationColWeights = [3.1, 3.0, 1.4] as const;
   const educationColWeightSum = educationColWeights.reduce((sum, weight) => sum + weight, 0);
@@ -454,7 +493,7 @@ const addEducationSection = (generator: PdfGenerator, locale: string): void => {
     margin: { left: margin, right: margin },
     tableWidth: availableWidth,
     theme: "plain",
-    body: EDUCATION_ENTRIES.map((e) => [isFr ? e.degree : e.degreeEn, e.school, e.years]),
+    body: EDUCATION_ENTRIES.map((e) => [isFr ? e.degree : e.degreeEn, e.school, e.years] as string[]),
     bodyStyles: {
       fontSize: 8.5,
       cellPadding: { top: 0.08, bottom: 0.08, left: 0.1, right: 0.1 },
@@ -482,19 +521,19 @@ const addEducationSection = (generator: PdfGenerator, locale: string): void => {
 const CARD_LOGO = 0.55;
 const CARD_CONTENT_X = CARD_LOGO + 0.16;
 
-const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Promise<void> => {
+const addOpenSourceSection = async ({ generator, locale }: SectionArgs): Promise<void> => {
   const doc = generator.getDoc();
   const { margin, availableWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
 
-  addSectionTitle(generator, t("achievements:title", locale));
+  addSectionTitle({ generator, title: t({ key: "achievements:title", locale }) });
 
   const logos = await Promise.all(
     OPENSOURCE_PROJECT_ENTRIES.map(({ logo }) => loadLogoForPdf(logo)),
   );
 
   for (const [index, { key, tags, githubUrl }] of OPENSOURCE_PROJECT_ENTRIES.entries()) {
-    ensureSpace(generator, 1.05);
+    ensureSpace({ generator, needed: 1.05 });
     const entryY = generator.currentY;
     const contentX = margin + CARD_CONTENT_X;
     const contentWidth = availableWidth - CARD_CONTENT_X;
@@ -507,7 +546,7 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
     if (logo) {
       const pad = 0.05;
       const innerSize = CARD_LOGO - pad * 2;
-      const fit = fitImageInBox(logo.width, logo.height, innerSize, innerSize);
+      const fit = fitImageInBox({ naturalWidth: logo.width, naturalHeight: logo.height, boxWidth: innerSize, boxHeight: innerSize });
       doc.addImage(
         logo.dataUri,
         "PNG",
@@ -523,7 +562,7 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(18, 22, 40);
-    doc.text(t(`achievements:projects.${key}.title`, locale), contentX, y);
+    doc.text(t({ key: `achievements:projects.${key}.title`, locale }), contentX, y);
 
     // GitHub link
     y += 0.2;
@@ -539,7 +578,7 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
     doc.setFont("helvetica", "normal");
     doc.setTextColor(48, 52, 65);
     const descLines = doc.splitTextToSize(
-      t(`achievements:projects.${key}.description`, locale),
+      t({ key: `achievements:projects.${key}.description`, locale }),
       contentWidth,
     ) as string[];
     descLines.forEach((line, i) => doc.text(line, contentX, y + i * 0.168));
@@ -564,23 +603,23 @@ const addOpenSourceSection = async (generator: PdfGenerator, locale: string): Pr
 // AI & ML Projects — cards
 // ---------------------------------------------------------------------------
 
-const addAiSection = (generator: PdfGenerator, locale: string): void => {
+const addAiSection = ({ generator, locale }: SectionArgs): void => {
   const doc = generator.getDoc();
   const { margin, availableWidth } = generator;
 
-  addSectionTitle(generator, t("ai:title", locale));
+  addSectionTitle({ generator, title: t({ key: "ai:title", locale }) });
 
   for (const { key, tags } of AI_PROJECT_ENTRIES) {
-    ensureSpace(generator, 1.1);
+    ensureSpace({ generator, needed: 1.1 });
     const entryY = generator.currentY;
     let y = entryY;
-    const company = t(`ai:projects.${key}.company`, locale);
+    const company = t({ key: `ai:projects.${key}.company`, locale });
 
     // Title + Company row
     doc.setFontSize(9.5);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(18, 22, 40);
-    doc.text(t(`ai:projects.${key}.title`, locale), margin, y + 0.17);
+    doc.text(t({ key: `ai:projects.${key}.title`, locale }), margin, y + 0.17);
 
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
@@ -595,7 +634,7 @@ const addAiSection = (generator: PdfGenerator, locale: string): void => {
     doc.setFont("helvetica", "normal");
     doc.setTextColor(48, 52, 65);
     const descLines = doc.splitTextToSize(
-      t(`ai:projects.${key}.description`, locale),
+      t({ key: `ai:projects.${key}.description`, locale }),
       availableWidth,
     ) as string[];
     descLines.forEach((line, i) => doc.text(line, margin, y + i * 0.178));
@@ -604,7 +643,7 @@ const addAiSection = (generator: PdfGenerator, locale: string): void => {
     // Bullets
     y += 0.07;
     doc.setFontSize(8);
-    const bullets = t(`ai:projects.${key}.bullets`, locale, { returnObjects: true }) as unknown as string[];
+    const bullets = t({ key: `ai:projects.${key}.bullets`, locale, opts: { returnObjects: true } }) as unknown as string[];
     for (const bullet of bullets) {
       const lines = doc.splitTextToSize(`• ${bullet}`, availableWidth) as string[];
       lines.forEach((line, i) => doc.text(line, margin, y + i * 0.175));
@@ -639,18 +678,20 @@ type ResumeFooterCellBuilder = (args: {
   totalPages: number;
 }) => string;
 
-const renderResumeFooters = async (
-  generator: PdfGenerator,
-  footerCellBuilder: ResumeFooterCellBuilder,
-): Promise<void> => {
+interface RenderResumeFootersArgs {
+  generator: PdfGenerator;
+  footerCellBuilder: ResumeFooterCellBuilder;
+}
+
+const renderResumeFooters = async ({ generator, footerCellBuilder }: RenderResumeFootersArgs): Promise<void> => {
   const doc = generator.getDoc();
   const totalPages = doc.getNumberOfPages();
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
   const iconColor = `rgb(${pr}, ${pg}, ${pb})`;
 
   const [mailIconUri, githubIconUri] = await Promise.all([
-    buildResumePdfIconDataUri(RESUME_PDF_CONTACT_ICON_PATHS.mail, iconColor),
-    buildResumePdfIconDataUri(RESUME_PDF_CONTACT_ICON_PATHS.github, iconColor),
+    buildResumePdfIconDataUri({ pathD: RESUME_PDF_CONTACT_ICON_PATHS.mail, color: iconColor }),
+    buildResumePdfIconDataUri({ pathD: RESUME_PDF_CONTACT_ICON_PATHS.github, color: iconColor }),
   ]);
 
   const cellWidth = generator.availableWidth / 3;
@@ -715,27 +756,27 @@ export const generateResumePdf = async ({ locale }: GenerateResumePdfArgs): Prom
   });
 
   // Page 1: Cover
-  await drawCoverPage(generator, locale);
+  await drawCoverPage({ generator, locale });
   await yieldToMainThread();
 
   // Page 2+: Experience & Education
   startSection(generator);
-  await addExperienceSection(generator, locale);
+  await addExperienceSection({ generator, locale });
   await yieldToMainThread();
-  addEducationSection(generator, locale);
+  addEducationSection({ generator, locale });
   await yieldToMainThread();
 
   // Achievements
   startSection(generator);
-  await addOpenSourceSection(generator, locale);
+  await addOpenSourceSection({ generator, locale });
   await yieldToMainThread();
 
   // Artificial Intelligence
   startSection(generator);
-  addAiSection(generator, locale);
+  addAiSection({ generator, locale });
   await yieldToMainThread();
 
-  await renderResumeFooters(generator, footerCellBuilder);
+  await renderResumeFooters({ generator, footerCellBuilder });
   generator.save();
 
   return filename;

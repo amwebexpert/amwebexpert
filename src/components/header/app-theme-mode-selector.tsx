@@ -1,6 +1,6 @@
 import { CheckOutlined, MoonOutlined, SunOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Flex, type MenuProps } from "antd";
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useSetThemeMode, useThemeMode } from "~/store/ui-preferences.store";
 import type { ThemeMode } from "~/store/ui-preferences.types";
@@ -8,7 +8,7 @@ import type { ThemeMode } from "~/store/ui-preferences.types";
 interface ModeChoice {
   code: ThemeMode;
   selectionLabel: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
 }
 
 export const AppThemeModeSelector: FunctionComponent = () => {

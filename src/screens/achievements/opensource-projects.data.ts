@@ -5,13 +5,13 @@ export type OpenSourceProjectKey =
   | "rnPocCollection"
   | "openMindset";
 
-export type OpenSourceProjectEntry = {
+export interface OpenSourceProjectEntry {
   key: OpenSourceProjectKey;
   tags: string[];
   githubUrl: string;
   /** Path relative to `public/` — sourced from the GitHub repo app icon. */
   logo: string;
-};
+}
 
 export const OPENSOURCE_PROJECT_ENTRIES: OpenSourceProjectEntry[] = [
   {

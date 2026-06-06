@@ -24,7 +24,7 @@ export const useUiPreferencesStore = create<UiPreferencesStore>()(
   devtools(persistedStateCreator, { name: PERSISTED_STORE_NAME })
 );
 
-export const useThemeMode = () => useUiPreferencesStore((state) => state.themeMode);
-export const useSetThemeMode = () => useUiPreferencesStore((state) => state.setThemeMode);
-export const useIsSiderCollapsed = () => useUiPreferencesStore((state) => state.isSiderCollapsed);
-export const useToggleSider = () => useUiPreferencesStore((state) => state.toggleSider);
+export const useThemeMode = (): ThemeMode => useUiPreferencesStore((state) => state.themeMode);
+export const useSetThemeMode = (): ((mode: ThemeMode) => void) => useUiPreferencesStore((state) => state.setThemeMode);
+export const useIsSiderCollapsed = (): boolean => useUiPreferencesStore((state) => state.isSiderCollapsed);
+export const useToggleSider = (): (() => void) => useUiPreferencesStore((state) => state.toggleSider);

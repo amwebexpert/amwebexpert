@@ -8,10 +8,10 @@ export type TechCategoryKey =
   | "cloud"
   | "ai";
 
-export type TechCategoryEntry = {
+export interface TechCategoryEntry {
   key: TechCategoryKey;
   techs: string[];
-};
+}
 
 export const TECH_CATEGORY_ENTRIES: TechCategoryEntry[] = [
   {

@@ -11,7 +11,7 @@ export const HeroSection: FunctionComponent = () => {
   const { token } = theme.useToken();
 
   const roles = [t("home:role0"), t("home:role1"), t("home:role2"), t("home:role3"), t("home:role4")];
-  const { displayText } = useTypewriter(roles);
+  const { displayText } = useTypewriter({ texts: roles });
 
   return (
     <div

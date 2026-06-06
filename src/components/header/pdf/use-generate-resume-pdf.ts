@@ -3,7 +3,12 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { type GenerateResumePdfArgs, generateResumePdf } from "./resume-pdf.utils";
 
-export const useGenerateResumePdf = () => {
+interface UseGenerateResumePdfResult {
+  generateResume: () => void;
+  isGeneratingResume: boolean;
+}
+
+export const useGenerateResumePdf = (): UseGenerateResumePdfResult => {
   const { t, i18n } = useTranslation();
 
   const { mutate, isPending } = useMutation<string, Error, GenerateResumePdfArgs>({

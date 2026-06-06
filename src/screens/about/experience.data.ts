@@ -1,4 +1,4 @@
-export type ExperienceEntry = {
+export interface ExperienceEntry {
   key: string;
   company: string;
   logoLight: string;
@@ -6,7 +6,7 @@ export type ExperienceEntry = {
   period: string;
   tags?: string[];
   aiPageLink?: boolean;
-};
+}
 
 export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   {

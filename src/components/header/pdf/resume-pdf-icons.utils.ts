@@ -14,7 +14,12 @@ export const RESUME_PDF_CONTACT_ICON_PATHS = {
   linkedin: LINKEDIN_OUTLINED_PATH,
 } as const;
 
-const buildIconSvg = (pathD: string, color: string): string =>
+interface BuildIconSvgArgs {
+  pathD: string;
+  color: string;
+}
+
+const buildIconSvg = ({ pathD, color }: BuildIconSvgArgs): string =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 896 896"><path fill="${color}" d="${pathD}"/></svg>`;
 
 export const rasterizeSvgToPngDataUri = (svg: string): Promise<string> =>
@@ -49,5 +54,10 @@ export const rasterizeSvgToPngDataUri = (svg: string): Promise<string> =>
     img.src = objectUrl;
   });
 
-export const buildResumePdfIconDataUri = (pathD: string, color: string): Promise<string> =>
-  rasterizeSvgToPngDataUri(buildIconSvg(pathD, color));
+interface BuildResumePdfIconDataUriArgs {
+  pathD: string;
+  color: string;
+}
+
+export const buildResumePdfIconDataUri = ({ pathD, color }: BuildResumePdfIconDataUriArgs): Promise<string> =>
+  rasterizeSvgToPngDataUri(buildIconSvg({ pathD, color }));

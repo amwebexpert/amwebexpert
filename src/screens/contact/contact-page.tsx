@@ -1,11 +1,11 @@
 import { GithubOutlined, LinkedinOutlined, MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Card, Col, Row, theme, Typography } from "antd";
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { FadeInItem } from "~/components/fade-in-item";
 
 interface ContactItem {
-  icon: React.ReactNode;
+  icon: ReactNode;
   labelKey: string;
   value: string;
   href: string;

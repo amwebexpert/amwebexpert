@@ -25,7 +25,7 @@ export const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
 export const DEFAULT_LANGUAGE = AppLanguage.fr;
 const I18NEXT_STORAGE_KEY = "i18nextLng";
 
-export const storeSelectedLanguage = (newCode: string) => {
+export const storeSelectedLanguage = (newCode: string): void => {
   localStorage.setItem(I18NEXT_STORAGE_KEY, newCode);
 };
 
@@ -33,7 +33,7 @@ export const loadSelectedLanguage = (): string | null => {
   return localStorage.getItem(I18NEXT_STORAGE_KEY);
 };
 
-const initI18N = () => {
+const initI18N = (): void => {
   if (!loadSelectedLanguage()) {
     storeSelectedLanguage(DEFAULT_LANGUAGE);
   }
@@ -54,4 +54,4 @@ const initI18N = () => {
 
 initI18N();
 
-export default i18next;
+export { i18next };

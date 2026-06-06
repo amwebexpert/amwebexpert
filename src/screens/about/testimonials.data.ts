@@ -1,9 +1,9 @@
-export type TestimonialEntry = {
+export interface TestimonialEntry {
   author: string;
   roleKey: string;
   quote: string;
   quoteFr: string;
-};
+}
 
 export const TESTIMONIAL_ENTRIES: TestimonialEntry[] = [
   {

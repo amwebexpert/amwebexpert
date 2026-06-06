@@ -14,11 +14,11 @@ import type { FunctionComponent, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { APP_NAV_ROUTES } from "~/route.constants";
 
-type NavItemConfig = {
+interface NavItemConfig {
   key: string;
   icon: ReactNode;
   labelKey: string;
-};
+}
 
 const NAV_ITEMS: NavItemConfig[] = [
   { key: APP_NAV_ROUTES.home, icon: <HomeOutlined />, labelKey: "nav:home" },
