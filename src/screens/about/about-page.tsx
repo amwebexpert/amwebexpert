@@ -3,6 +3,7 @@ import { Avatar, Card, Col, Divider, Row, Space, Tag, theme, Timeline, Typograph
 import { Link } from "@tanstack/react-router";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { FadeInItem } from "~/components/fade-in-item";
 import { EDUCATION_ENTRIES } from "./education.data";
 import { ExperienceCompanyLogo, experienceLogoSize } from "./experience-company-logo";
 import { EXPERIENCE_ENTRIES } from "./experience.data";
@@ -51,6 +52,7 @@ export const AboutPage: FunctionComponent = () => {
 
       <Row gutter={[24, 24]}>
         <Col xs={24} md={8}>
+          <FadeInItem index={0} style={{ height: "100%" }}>
           <Card style={{ textAlign: "center" }}>
             <Avatar src={`${import.meta.env.BASE_URL}profile.jpg`} size={120} style={{ fontSize: 40, marginBottom: 16 }}>
               AM
@@ -92,13 +94,17 @@ export const AboutPage: FunctionComponent = () => {
               </Text>
             </div>
           </Card>
+          </FadeInItem>
         </Col>
 
         <Col xs={24} md={16}>
+          <FadeInItem index={1}>
           <Card style={{ marginBottom: 16 }}>
             <Paragraph style={{ fontSize: 15, lineHeight: 1.8, margin: 0 }}>{t("aboutPage:summary")}</Paragraph>
           </Card>
+          </FadeInItem>
 
+          <FadeInItem index={2}>
           <Card style={{ marginBottom: 16 }}>
             <Title level={5} style={{ marginBottom: 16 }}>
               {t("aboutPage:expertiseTitle")}
@@ -111,7 +117,9 @@ export const AboutPage: FunctionComponent = () => {
               ))}
             </ul>
           </Card>
+          </FadeInItem>
 
+          <FadeInItem index={3}>
           <Card>
             <Title level={5} style={{ marginBottom: 16 }}>
               <BookOutlined style={{ marginRight: 8, color: token.colorPrimary }} />
@@ -136,9 +144,11 @@ export const AboutPage: FunctionComponent = () => {
               }))}
             />
           </Card>
+          </FadeInItem>
         </Col>
       </Row>
 
+      <FadeInItem index={4}>
       <Card style={{ marginTop: 24 }}>
         <Title level={5} style={{ marginBottom: 16 }}>
           <SolutionOutlined style={{ marginRight: 8, color: token.colorPrimary }} />
@@ -215,7 +225,9 @@ export const AboutPage: FunctionComponent = () => {
           }))}
         />
       </Card>
+      </FadeInItem>
 
+      <FadeInItem index={5}>
       <Card style={{ marginTop: 24 }}>
         <Title level={5} style={{ marginBottom: 16 }}>
           {t("aboutPage:testimonialsTitle")}
@@ -237,7 +249,9 @@ export const AboutPage: FunctionComponent = () => {
           </div>
         ))}
       </Card>
+      </FadeInItem>
 
+      <FadeInItem index={6}>
       <Card style={{ marginTop: 24 }}>
         <Title level={5} style={{ marginBottom: 16 }}>
           <LinkOutlined style={{ marginRight: 8, color: token.colorPrimary }} />
@@ -253,6 +267,7 @@ export const AboutPage: FunctionComponent = () => {
           ))}
         </ul>
       </Card>
+      </FadeInItem>
     </div>
   );
 };

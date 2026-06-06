@@ -1,3 +1,4 @@
+import { GithubOutlined } from "@ant-design/icons";
 import { Avatar, Button, Divider, Modal, Space, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
@@ -39,13 +40,23 @@ export const AppAboutInfoModal: FunctionComponent<AppAboutInfoModalProps> = ({ o
 
       <Divider style={{ margin: "12px 0" }} />
 
-      <Space direction="vertical" size="small" style={{ width: "100%", textAlign: "center" }}>
+      <Space orientation="vertical" size="small" style={{ width: "100%", textAlign: "center" }}>
         <div>
           <Text>{t("about:webappRelease")} </Text>
           <Text strong>
             {APP_VERSION_INFO.VERSION} — {APP_VERSION_INFO.VERSION_DATE}
           </Text>
         </div>
+        <Button
+          type="link"
+          icon={<GithubOutlined />}
+          href={APP_VERSION_INFO.REPOSITORY}
+          target="_blank"
+          rel="noopener noreferrer"
+          styles={{ icon: { marginInlineEnd: 6 } }}
+        >
+          {t("common:viewOnGitHub")}
+        </Button>
       </Space>
     </Modal>
   );

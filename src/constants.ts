@@ -6,9 +6,9 @@ export const APP_VERSION_INFO = Object.freeze({
   DESCRIPTION: "André Masson — Professional CV / Resume",
   REPOSITORY: "https://github.com/amwebexpert/amwebexpert",
   AUTHOR: "André Masson",
-  VERSION: "1.5.0",
+  VERSION: "1.6.0",
   VERSION_DATE: "2026-06-06",
-  VERSION_DATE_ISO: "2026-06-06T15:47:21.333Z",
+  VERSION_DATE_ISO: "2026-06-06T15:54:02.703Z",
 });
 
-export const LONG_VERSION_DATE = "1.5.0 (2026-06-06)";
+export const LONG_VERSION_DATE = "1.6.0 (2026-06-06)";

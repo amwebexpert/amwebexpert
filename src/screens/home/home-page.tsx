@@ -1,6 +1,7 @@
 import { Col, Row, theme, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { FadeInItem } from "~/components/fade-in-item";
 import { HeroSection } from "./hero-section";
 
 const { Title, Paragraph } = Typography;
@@ -32,26 +33,28 @@ export const HomePage: FunctionComponent = () => {
         </Title>
 
         <Row gutter={[24, 24]}>
-          {EXPERTISE_CARDS.map(({ key, icon, titleKey, descKey }) => (
+          {EXPERTISE_CARDS.map(({ key, icon, titleKey, descKey }, index) => (
             <Col xs={24} md={8} key={key}>
-              <div
-                style={{
-                  padding: 24,
-                  borderRadius: token.borderRadiusLG,
-                  background: token.colorBgElevated,
-                  border: `1px solid ${token.colorBorder}`,
-                  textAlign: "center",
-                  height: "100%",
-                }}
-              >
-                <div style={{ fontSize: 36, marginBottom: 12 }}>{icon}</div>
-                <Title level={5} style={{ marginBottom: 8 }}>
-                  {t(titleKey)}
-                </Title>
-                <Paragraph type="secondary" style={{ margin: 0 }}>
-                  {t(descKey)}
-                </Paragraph>
-              </div>
+              <FadeInItem index={index} style={{ height: "100%" }}>
+                <div
+                  style={{
+                    padding: 24,
+                    borderRadius: token.borderRadiusLG,
+                    background: token.colorBgElevated,
+                    border: `1px solid ${token.colorBorder}`,
+                    textAlign: "center",
+                    height: "100%",
+                  }}
+                >
+                  <div style={{ fontSize: 36, marginBottom: 12 }}>{icon}</div>
+                  <Title level={5} style={{ marginBottom: 8 }}>
+                    {t(titleKey)}
+                  </Title>
+                  <Paragraph type="secondary" style={{ margin: 0 }}>
+                    {t(descKey)}
+                  </Paragraph>
+                </div>
+              </FadeInItem>
             </Col>
           ))}
         </Row>
