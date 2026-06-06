@@ -1,1 +1,0 @@
-import{ht as e}from"./fade-in-item-zmy2x-rF.js";function t(e){return[`small`,`middle`,`medium`,`large`].includes(e)}function n(t){return t?e(t):!1}export{n,t};
