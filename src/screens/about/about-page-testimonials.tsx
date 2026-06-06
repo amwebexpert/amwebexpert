@@ -6,9 +6,8 @@ import { TESTIMONIAL_ENTRIES } from "./testimonials.data";
 const { Paragraph, Text, Title } = Typography;
 
 export const AboutPageTestimonials: FunctionComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { token } = theme.useToken();
-  const isFrench = i18n.language === "fr";
 
   return (
     <Card style={{ marginTop: 24 }}>
@@ -27,7 +26,7 @@ export const AboutPageTestimonials: FunctionComponent = () => {
               paddingLeft: 12,
             }}
           >
-            &ldquo;{isFrench ? testimonial.quoteFr : testimonial.quote}&rdquo;
+            &ldquo;{t(`aboutPage:testimonials.${testimonial.key}.quote`)}&rdquo;
           </Paragraph>
           <Text strong style={{ fontSize: 13 }}>
             {testimonial.author}

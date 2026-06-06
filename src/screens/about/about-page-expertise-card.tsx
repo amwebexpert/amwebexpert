@@ -1,15 +1,12 @@
 import { Card, theme, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
-import { getExpertiseItems } from "./about-page.utils";
-
 const { Text, Title } = Typography;
 
 export const AboutPageExpertiseCard: FunctionComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { token } = theme.useToken();
-  const isFrench = i18n.language === "fr";
-  const expertiseItems = getExpertiseItems({ isFrench });
+  const expertiseItems = t("aboutPage:expertiseItems", { returnObjects: true }) as string[];
 
   return (
     <Card style={{ marginBottom: 16 }}>

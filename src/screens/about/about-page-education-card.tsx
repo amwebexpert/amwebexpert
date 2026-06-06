@@ -7,9 +7,8 @@ import { EDUCATION_ENTRIES } from "./education.data";
 const { Text, Title } = Typography;
 
 export const AboutPageEducationCard: FunctionComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { token } = theme.useToken();
-  const isFrench = i18n.language === "fr";
 
   return (
     <Card>
@@ -18,12 +17,12 @@ export const AboutPageEducationCard: FunctionComponent = () => {
         {t("aboutPage:educationTitle")}
       </Title>
       <Timeline
-        items={EDUCATION_ENTRIES.map(({ degree, degreeEn, school, years }) => ({
+        items={EDUCATION_ENTRIES.map(({ key, school, years }) => ({
           color: token.colorPrimary,
           content: (
             <div>
               <Text strong style={{ display: "block" }}>
-                {isFrench ? degree : degreeEn}
+                {t(`aboutPage:educationEntries.${key}`)}
               </Text>
               <Text type="secondary" style={{ fontSize: 13 }}>
                 {school}

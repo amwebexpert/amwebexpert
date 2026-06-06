@@ -257,8 +257,6 @@ const drawCoverPage = async ({ generator, locale }: SectionArgs): Promise<void> 
   const { margin, pageWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
   const centerX = pageWidth / 2;
-  const isFr = locale === "fr";
-
   const profileUrl = `${window.location.origin}${import.meta.env.BASE_URL}profile.jpg`;
   const profileDataUri = await fetchUrlAsDataUri(profileUrl);
 
@@ -293,9 +291,7 @@ const drawCoverPage = async ({ generator, locale }: SectionArgs): Promise<void> 
   doc.setFontSize(9);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(80, 80, 80);
-  const tagline = isFr
-    ? "20+ ans à concevoir des applications mobiles, plateformes web, logiciels d'entreprise et IA industrielle pour les mines"
-    : "20+ years building mobile apps, web platforms, enterprise software & industrial AI for mining";
+  const tagline = t({ key: "home:subtitle", locale });
   const taglineLines = doc.splitTextToSize(tagline, 5.5) as string[];
   doc.text(taglineLines, centerX, y, { align: "center" });
   y += taglineLines.length * 0.16;
@@ -475,7 +471,6 @@ const addExperienceSection = async ({ generator, locale }: SectionArgs): Promise
 // ---------------------------------------------------------------------------
 
 const addEducationSection = ({ generator, locale }: SectionArgs): void => {
-  const isFr = locale === "fr";
   const doc = generator.getDoc();
   const { margin, availableWidth } = generator;
   const { r: pr, g: pg, b: pb } = RESUME_THEME.primaryColor;
@@ -493,7 +488,7 @@ const addEducationSection = ({ generator, locale }: SectionArgs): void => {
     margin: { left: margin, right: margin },
     tableWidth: availableWidth,
     theme: "plain",
-    body: EDUCATION_ENTRIES.map((e) => [isFr ? e.degree : e.degreeEn, e.school, e.years] as string[]),
+    body: EDUCATION_ENTRIES.map((e) => [t({ key: `aboutPage:educationEntries.${e.key}`, locale }), e.school, e.years] as string[]),
     bodyStyles: {
       fontSize: 8.5,
       cellPadding: { top: 0.08, bottom: 0.08, left: 0.1, right: 0.1 },

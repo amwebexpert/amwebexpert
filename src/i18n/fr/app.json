@@ -63,9 +63,28 @@
     "certification": "Sun Certified Web Component Developer",
     "testimonialsTitle": "Recommandations",
     "testimonials": {
-      "ericRole": "Mentoré — Projet application mobile Beneva",
-      "danielRole": "Collègue"
+      "eric": {
+        "role": "Mentoré — Projet application mobile Beneva",
+        "quote": "André était mon mentor sur le projet de création de l'application mobile Beneva. Il possède une grande expérience en développement et maintient ses connaissances très à jour. Il m'a aidé à progresser dans de nombreux domaines, notamment le mocking en tests unitaires. C'est une personne très ouverte à qui on peut présenter de nouvelles approches techniques en toute confiance."
+      },
+      "daniel": {
+        "role": "Collègue",
+        "quote": "André est un développeur incroyable avec de nombreuses compétences. Pour tout défi, André trouvera une solution durable et évolutive, que ce soit en frontend ou backend. Il peut diriger et conseiller sur de multiples aspects techniques d'un projet. André est aussi une personne formidable — l'esprit d'équipe et une attitude positive font toujours partie de lui."
+      }
     },
+    "educationEntries": {
+      "cs": "Baccalauréat en informatique",
+      "math": "Baccalauréat en enseignement des mathématiques"
+    },
+    "expertiseItems": [
+      "Architecture & développement mobile (Flutter, React Native)",
+      "Développement full-stack (React, NestJS, Node.js)",
+      "Leadership technique & mentorat",
+      "Spring Boot / microservices (backends d'entreprise)",
+      "Authentification OAuth2, Auth0, Firebase",
+      "Cloud (AWS, GCP, Docker) & pipelines CI/CD",
+      "IA / RAG / ML on-device (PyTorch, Transformers.js)"
+    ],
     "publicationsTitle": "Publications & contenus",
     "publications": {
       "flutter3d": "Perspective et effets 3D dans Flutter (YouTube)",
