@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TechnologiesRouteImport } from './routes/technologies'
 import { Route as DemosRouteImport } from './routes/demos'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CertificationsRouteImport } from './routes/certifications'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as AboutRouteImport } from './routes/about'
@@ -31,11 +30,6 @@ const DemosRoute = DemosRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CertificationsRoute = CertificationsRouteImport.update({
-  id: '/certifications',
-  path: '/certifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiRoute = AiRouteImport.update({
@@ -64,7 +58,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
   '/ai': typeof AiRoute
-  '/certifications': typeof CertificationsRoute
   '/contact': typeof ContactRoute
   '/demos': typeof DemosRoute
   '/technologies': typeof TechnologiesRoute
@@ -74,7 +67,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
   '/ai': typeof AiRoute
-  '/certifications': typeof CertificationsRoute
   '/contact': typeof ContactRoute
   '/demos': typeof DemosRoute
   '/technologies': typeof TechnologiesRoute
@@ -85,7 +77,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
   '/ai': typeof AiRoute
-  '/certifications': typeof CertificationsRoute
   '/contact': typeof ContactRoute
   '/demos': typeof DemosRoute
   '/technologies': typeof TechnologiesRoute
@@ -97,7 +88,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/achievements'
     | '/ai'
-    | '/certifications'
     | '/contact'
     | '/demos'
     | '/technologies'
@@ -107,7 +97,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/achievements'
     | '/ai'
-    | '/certifications'
     | '/contact'
     | '/demos'
     | '/technologies'
@@ -117,7 +106,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/achievements'
     | '/ai'
-    | '/certifications'
     | '/contact'
     | '/demos'
     | '/technologies'
@@ -128,7 +116,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AchievementsRoute: typeof AchievementsRoute
   AiRoute: typeof AiRoute
-  CertificationsRoute: typeof CertificationsRoute
   ContactRoute: typeof ContactRoute
   DemosRoute: typeof DemosRoute
   TechnologiesRoute: typeof TechnologiesRoute
@@ -155,13 +142,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/certifications': {
-      id: '/certifications'
-      path: '/certifications'
-      fullPath: '/certifications'
-      preLoaderRoute: typeof CertificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai': {
@@ -200,7 +180,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AchievementsRoute: AchievementsRoute,
   AiRoute: AiRoute,
-  CertificationsRoute: CertificationsRoute,
   ContactRoute: ContactRoute,
   DemosRoute: DemosRoute,
   TechnologiesRoute: TechnologiesRoute,

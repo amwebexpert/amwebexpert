@@ -1,4 +1,4 @@
-import { GithubOutlined, ShoppingOutlined } from "@ant-design/icons";
+import { GithubOutlined } from "@ant-design/icons";
 import { Button, Card, Space, Tag, Typography } from "antd";
 import type { FunctionComponent } from "react";
 
@@ -7,16 +7,14 @@ export interface ProjectInfo {
   description: string;
   tags: string[];
   githubUrl?: string;
-  storeUrl?: string;
 }
 
 interface ProjectCardProps {
   project: ProjectInfo;
   githubLabel?: string;
-  storeLabel?: string;
 }
 
-export const ProjectCard: FunctionComponent<ProjectCardProps> = ({ project, githubLabel = "GitHub", storeLabel = "Play Store" }) => (
+export const ProjectCard: FunctionComponent<ProjectCardProps> = ({ project, githubLabel = "GitHub" }) => (
   <Card
     size="small"
     style={{ height: "100%" }}
@@ -24,11 +22,6 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({ project, gith
       project.githubUrl && (
         <Button key="github" type="link" icon={<GithubOutlined />} href={project.githubUrl} target="_blank" size="small">
           {githubLabel}
-        </Button>
-      ),
-      project.storeUrl && (
-        <Button key="store" type="link" icon={<ShoppingOutlined />} href={project.storeUrl} target="_blank" size="small">
-          {storeLabel}
         </Button>
       ),
     ].filter(Boolean)}

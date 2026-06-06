@@ -33,7 +33,7 @@ export const AppAboutInfoModal: FunctionComponent<AppAboutInfoModalProps> = ({ o
           André Masson
         </Title>
         <Text type="secondary" style={{ fontSize: 13 }}>
-          {APP_VERSION_INFO.AUTHOR}
+          {APP_VERSION_INFO.DESCRIPTION}
         </Text>
       </div>
 

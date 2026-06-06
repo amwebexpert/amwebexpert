@@ -2,8 +2,7 @@
   "common": {
     "ok": "Ok",
     "readMore": "En savoir plus",
-    "viewOnGitHub": "Voir sur GitHub",
-    "viewOnStore": "Voir sur Play Store"
+    "viewOnGitHub": "Voir sur GitHub"
   },
   "about": {
     "title": "À propos de l'application...",
@@ -21,7 +20,6 @@
     "technologies": "Technologies",
     "achievements": "Réalisations",
     "ai": "IA & ML",
-    "certifications": "Certifications",
     "demos": "Démos",
     "contact": "Contact"
   },
@@ -74,8 +72,6 @@
     "subtitle": "Une sélection de projets et accomplissements",
     "enterprise": "Projets d'entreprise",
     "opensource": "Open Source",
-    "mobile": "Applications mobiles (Google Play)",
-    "viewOnStore": "Play Store",
     "viewOnGitHub": "GitHub"
   },
   "ai": {
@@ -89,10 +85,6 @@
     "parsing": "Analyse & parsing de code",
     "protocols": "Protocoles IA",
     "mobileAI": "IA On-device / Mobile"
-  },
-  "certifications": {
-    "title": "Certifications",
-    "subtitle": "Certifications professionnelles et formations"
   },
   "demos": {
     "title": "Démos",

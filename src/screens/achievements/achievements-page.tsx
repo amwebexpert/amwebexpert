@@ -54,51 +54,6 @@ const OPENSOURCE_PROJECTS: ProjectInfo[] = [
   },
 ];
 
-const MOBILE_APPS: ProjectInfo[] = [
-  {
-    title: "Guess the Text",
-    description: "Language-learning hangman game. Multilingual word database, sound effects, statistics tracking.",
-    tags: ["Flutter", "Dart", "MobX"],
-    storeUrl: "https://play.google.com/store/apps/details?id=com.amwebexpert.guess_the_text",
-  },
-  {
-    title: "CSV Viewer",
-    description: "Fast CSV file parser and viewer with column selection, filtering, and sharing capabilities.",
-    tags: ["React Native", "TypeScript"],
-    storeUrl: "https://play.google.com/store/apps/details?id=com.amwebexpert.csvviewer",
-  },
-  {
-    title: "e-Droid-Cell Pro",
-    description: "Full-featured Excel-compatible spreadsheet editor with 120+ functions, charts, and formula support.",
-    tags: ["Android", "Kotlin", "SQLite"],
-  },
-  {
-    title: "Wireless CopyPaste",
-    description: "Bluetooth and Wi-Fi Direct file & clipboard sharing between Android devices. No internet required.",
-    tags: ["Android", "Kotlin", "Bluetooth", "Wi-Fi Direct"],
-  },
-  {
-    title: "Calculator Mem Pro",
-    description: "Scientific calculator with persistent history, memory functions, and conversion utilities.",
-    tags: ["Android", "Kotlin"],
-  },
-  {
-    title: "Alert Responder",
-    description: "Emergency communication tool with automated SMS and GPS location sharing.",
-    tags: ["Android", "Kotlin", "GPS", "SMS"],
-  },
-  {
-    title: "Tip Calculator",
-    description: "Bill splitting and tip calculation utility with customizable tip rates and group split.",
-    tags: ["Android", "Kotlin"],
-  },
-  {
-    title: "Slave Device",
-    description: "WiFi-based device file sharing and remote control application.",
-    tags: ["Android", "Kotlin", "WiFi"],
-  },
-];
-
 export const AchievementsPage: FunctionComponent = () => {
   const { t } = useTranslation();
 
@@ -110,7 +65,7 @@ export const AchievementsPage: FunctionComponent = () => {
         <Row gutter={[16, 16]}>
           {ENTERPRISE_PROJECTS.map((project) => (
             <Col xs={24} md={12} key={project.title}>
-              <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} storeLabel={t("achievements:viewOnStore")} />
+              <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} />
             </Col>
           ))}
         </Row>
@@ -123,20 +78,7 @@ export const AchievementsPage: FunctionComponent = () => {
         <Row gutter={[16, 16]}>
           {OPENSOURCE_PROJECTS.map((project) => (
             <Col xs={24} md={12} key={project.title}>
-              <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} storeLabel={t("achievements:viewOnStore")} />
-            </Col>
-          ))}
-        </Row>
-      ),
-    },
-    {
-      key: "mobile",
-      label: t("achievements:mobile"),
-      children: (
-        <Row gutter={[16, 16]}>
-          {MOBILE_APPS.map((project) => (
-            <Col xs={24} sm={12} lg={8} key={project.title}>
-              <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} storeLabel={t("achievements:viewOnStore")} />
+              <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} />
             </Col>
           ))}
         </Row>
