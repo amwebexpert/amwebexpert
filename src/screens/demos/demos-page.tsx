@@ -50,15 +50,18 @@ export const DemosPage: FunctionComponent = () => {
             <Card
               size="small"
               style={{ height: "100%" }}
-              actions={[
-                <a key="gh" href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                  <GithubOutlined /> {t("demos:viewOnGitHub")}
-                </a>,
-              ]}
+              title={repo.name}
+              extra={
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("demos:viewOnGitHub")}
+                >
+                  <GithubOutlined />
+                </a>
+              }
             >
-              <Typography.Text strong style={{ display: "block", marginBottom: 4 }}>
-                {repo.name}
-              </Typography.Text>
               {repo.description && (
                 <Typography.Paragraph type="secondary" style={{ fontSize: 12, marginBottom: 8 }} ellipsis={{ rows: 2 }}>
                   {repo.description}

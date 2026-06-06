@@ -2,6 +2,7 @@ import { GithubOutlined, LinkedinOutlined, MailOutlined, PhoneOutlined } from "@
 import { Card, Col, Row, theme, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { FadeInItem } from "~/components/fade-in-item";
 
 interface ContactItem {
   icon: React.ReactNode;
@@ -49,35 +50,37 @@ export const ContactPage: FunctionComponent = () => {
       </Typography.Paragraph>
 
       <Row gutter={[16, 16]}>
-        {CONTACT_ITEMS.map(({ icon, labelKey, value, href }) => (
+        {CONTACT_ITEMS.map(({ icon, labelKey, value, href }, index) => (
           <Col xs={24} sm={12} key={labelKey}>
-            <Card
-              size="small"
-              hoverable
-              onClick={() => window.open(href, "_blank")}
-              style={{ cursor: "pointer" }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div
-                  style={{
-                    fontSize: 24,
-                    color: token.colorPrimary,
-                    width: 40,
-                    textAlign: "center",
-                  }}
-                >
-                  {icon}
+            <FadeInItem index={index} style={{ height: "100%" }}>
+              <Card
+                size="small"
+                hoverable
+                onClick={() => window.open(href, "_blank")}
+                style={{ cursor: "pointer" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div
+                    style={{
+                      fontSize: 24,
+                      color: token.colorPrimary,
+                      width: 40,
+                      textAlign: "center",
+                    }}
+                  >
+                    {icon}
+                  </div>
+                  <div>
+                    <Typography.Text type="secondary" style={{ fontSize: 12, display: "block" }}>
+                      {t(labelKey)}
+                    </Typography.Text>
+                    <Typography.Text strong style={{ color: token.colorPrimary }}>
+                      {value}
+                    </Typography.Text>
+                  </div>
                 </div>
-                <div>
-                  <Typography.Text type="secondary" style={{ fontSize: 12, display: "block" }}>
-                    {t(labelKey)}
-                  </Typography.Text>
-                  <Typography.Text strong style={{ color: token.colorPrimary }}>
-                    {value}
-                  </Typography.Text>
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </FadeInItem>
           </Col>
         ))}
       </Row>

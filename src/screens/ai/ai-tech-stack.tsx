@@ -1,3 +1,4 @@
+import { FadeInItem } from "~/components/fade-in-item";
 import { Col, Row, Tag, theme, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
@@ -40,28 +41,30 @@ export const AiTechStack: FunctionComponent = () => {
 
   return (
     <Row gutter={[16, 16]}>
-      {AI_TECH_CATEGORIES.map(({ key, techs }) => (
+      {AI_TECH_CATEGORIES.map(({ key, techs }, index) => (
         <Col xs={24} md={12} key={key}>
-          <div
-            style={{
-              padding: 16,
-              borderRadius: token.borderRadiusLG,
-              background: token.colorBgElevated,
-              border: `1px solid ${token.colorBorder}`,
-              height: "100%",
-            }}
-          >
-            <Typography.Text strong style={{ display: "block", marginBottom: 10, color: token.colorPrimary }}>
-              {t(`ai:${key}`)}
-            </Typography.Text>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {techs.map((tech) => (
-                <Tag key={tech} style={{ margin: 0, fontSize: 12 }}>
-                  {tech}
-                </Tag>
-              ))}
+          <FadeInItem index={index} style={{ height: "100%" }}>
+            <div
+              style={{
+                padding: 16,
+                borderRadius: token.borderRadiusLG,
+                background: token.colorBgElevated,
+                border: `1px solid ${token.colorBorder}`,
+                height: "100%",
+              }}
+            >
+              <Typography.Text strong style={{ display: "block", marginBottom: 10, color: token.colorPrimary }}>
+                {t(`ai:${key}`)}
+              </Typography.Text>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {techs.map((tech) => (
+                  <Tag key={tech} style={{ margin: 0, fontSize: 12 }}>
+                    {tech}
+                  </Tag>
+                ))}
+              </div>
             </div>
-          </div>
+          </FadeInItem>
         </Col>
       ))}
     </Row>

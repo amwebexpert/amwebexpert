@@ -1,6 +1,7 @@
 import { Col, Divider, Row, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { FadeInItem } from "~/components/fade-in-item";
 import { AiProjectCard, type AiProjectInfo } from "./ai-project-card";
 import { AiTechStack } from "./ai-tech-stack";
 
@@ -68,9 +69,11 @@ export const AiPage: FunctionComponent = () => {
         {t("ai:projectsTitle")}
       </Typography.Title>
       <Row gutter={[16, 16]}>
-        {AI_PROJECTS.map((project) => (
+        {AI_PROJECTS.map((project, index) => (
           <Col xs={24} md={12} key={project.title}>
-            <AiProjectCard project={project} />
+            <FadeInItem index={index} style={{ height: "100%" }}>
+              <AiProjectCard project={project} />
+            </FadeInItem>
           </Col>
         ))}
       </Row>

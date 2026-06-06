@@ -11,6 +11,7 @@ import {
 import { Col, Row, Typography } from "antd";
 import type { FunctionComponent, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
+import { FadeInItem } from "~/components/fade-in-item";
 import { TechCategory } from "./tech-category";
 
 const TECH_CATEGORIES: { key: string; icon: ReactNode; techs: string[] }[] = [
@@ -68,13 +69,17 @@ export const TechnologiesPage: FunctionComponent = () => {
 
       <Row gutter={[16, 0]}>
         <Col xs={24} md={12}>
-          {TECH_CATEGORIES.slice(0, 4).map(({ key, icon, techs }) => (
-            <TechCategory key={key} title={t(`technologies:${key}`)} icon={icon} techs={techs} />
+          {TECH_CATEGORIES.slice(0, 4).map(({ key, icon, techs }, index) => (
+            <FadeInItem key={key} index={index}>
+              <TechCategory title={t(`technologies:${key}`)} icon={icon} techs={techs} />
+            </FadeInItem>
           ))}
         </Col>
         <Col xs={24} md={12}>
-          {TECH_CATEGORIES.slice(4).map(({ key, icon, techs }) => (
-            <TechCategory key={key} title={t(`technologies:${key}`)} icon={icon} techs={techs} />
+          {TECH_CATEGORIES.slice(4).map(({ key, icon, techs }, index) => (
+            <FadeInItem key={key} index={index + 4}>
+              <TechCategory title={t(`technologies:${key}`)} icon={icon} techs={techs} />
+            </FadeInItem>
           ))}
         </Col>
       </Row>

@@ -1,6 +1,7 @@
 import { Col, Row, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { FadeInItem } from "~/components/fade-in-item";
 import { OPENSOURCE_PROJECT_ENTRIES } from "./opensource-projects.data";
 import { ProjectCard } from "./project-card";
 
@@ -23,9 +24,11 @@ export const AchievementsPage: FunctionComponent = () => {
       </Typography.Paragraph>
 
       <Row gutter={[16, 16]}>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <Col xs={24} md={12} key={project.title}>
-            <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} />
+            <FadeInItem index={index} style={{ height: "100%" }}>
+              <ProjectCard project={project} githubLabel={t("achievements:viewOnGitHub")} />
+            </FadeInItem>
           </Col>
         ))}
       </Row>
