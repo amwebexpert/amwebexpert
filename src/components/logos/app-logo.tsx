@@ -6,5 +6,5 @@ interface AppLogoProps {
 }
 
 export const AppLogo: FunctionComponent<AppLogoProps> = ({ width = 48, style }) => (
-  <img src="/logo.png" alt="AM" width={width} height={width} style={{ borderRadius: 8, ...style }} />
+  <img src={`${import.meta.env.BASE_URL}logo.png`} alt="AM" width={width} height={width} style={{ borderRadius: 8, ...style }} />
 );
