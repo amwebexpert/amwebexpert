@@ -23,13 +23,17 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
       "Industrial AI solutions for mining & metallurgy: computer vision, RAG, MCP tooling",
       "Real-time CV pipelines (Mask R-CNN), semantic code search, on-device mobile RAG",
       "Technology advisor — practical, reliable AI tools for industry stakeholders",
+      "Mobile field app (Expo): MJPEG live view, native streamer, real-time 3D pipe tracking (Three.js, WebSocket)",
+      "Manufacture QA app: auto inspections, cam/GPS diagnosis, PDF/Excel export, OTA & factory provisioning",
     ],
     bulletsFr: [
       "Solutions IA industrielles pour mines et métallurgie : vision par ordinateur, RAG, outils MCP",
       "Pipelines CV temps réel (Mask R-CNN), recherche sémantique de code, RAG mobile on-device",
       "Conseiller technologique — outils IA pratiques et fiables pour l'industrie",
+      "App terrain (Expo) : flux MJPEG, streaming natif, suivi 3D temps réel des conduites (Three.js, WebSocket)",
+      "App QA manufacture : inspections auto, diagnostic cam/GPS, export PDF/Excel, OTA et paramétrage usine",
     ],
-    tags: ["PyTorch", "MCP", "RAG", "NestJS", "React Native", "TypeScript", "Tanstack", "Ant Design"],
+    tags: ["PyTorch", "MCP", "RAG", "NestJS", "React Native", "Expo", "Three.js", "TypeScript", "Tanstack", "Ant Design"],
     aiPageLink: true,
   },
   {

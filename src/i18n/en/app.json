@@ -194,7 +194,7 @@
     "location": "Montréal, Québec, Canada"
   },
   "pdf": {
-    "generateResume": "Generate PDF Resume",
+    "generateResume": "PDF Resume",
     "success": "PDF resume generated",
     "error": "Failed to generate PDF resume",
     "exportFileDescription": "Saved as {{filename}}"

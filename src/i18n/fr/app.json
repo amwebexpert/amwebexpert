@@ -194,7 +194,7 @@
     "location": "Montréal, Québec, Canada"
   },
   "pdf": {
-    "generateResume": "Générer le CV en PDF",
+    "generateResume": "CV au format PDF",
     "success": "CV PDF généré",
     "error": "Échec de la génération du CV PDF",
     "exportFileDescription": "Enregistré sous {{filename}}"
