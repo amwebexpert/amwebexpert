@@ -6,19 +6,19 @@ import { TechCategory } from "./tech-category";
 const TECH_CATEGORIES = [
   {
     key: "languages",
-    techs: ["TypeScript", "JavaScript", "Kotlin", "Dart", "Python", "Swift"],
+    techs: ["TypeScript", "JavaScript", "Java", "Kotlin", "Dart", "Python", "Groovy", "Swift"],
   },
   {
     key: "mobile",
-    techs: ["Flutter", "React Native", "Android SDK", "iOS / Swift", "Expo", "MobX"],
+    techs: ["Flutter", "React Native", "Android SDK", "iOS / Swift", "Expo", "React Navigation", "MMKV", "MobX"],
   },
   {
     key: "frontend",
-    techs: ["React", "TanStack Router", "TanStack Query", "Ant Design", "Material-UI", "Redux", "Zustand"],
+    techs: ["React", "TanStack Router", "TanStack Query", "Ant Design", "Material-UI", "Redux", "Zustand", "Angular"],
   },
   {
     key: "backend",
-    techs: ["NestJS", "Node.js", "GraphQL", "Apollo", "REST", "OpenApi", "Swagger"],
+    techs: ["NestJS", "Node.js", "Spring Boot", "Grails", "GraphQL", "Apollo", "REST", "RabbitMQ", "OpenApi", "Swagger"],
   },
   {
     key: "databases",
@@ -26,11 +26,11 @@ const TECH_CATEGORIES = [
   },
   {
     key: "devtools",
-    techs: ["VSCode", "Cursor", "Claude Code", "IntelliJ", "Android Studio", "Xcode", "Git", "GitHub", "Gradle", "Maven", "Jenkins", "SonarQube"],
+    techs: ["VSCode", "Cursor", "Claude Code", "IntelliJ", "Android Studio", "Xcode", "Git", "GitHub", "Gradle", "Maven", "Jenkins", "Cypress", "Jira", "SonarQube"],
   },
   {
     key: "cloud",
-    techs: ["AWS (S3, DynamoDB)", "Google Cloud", "Firebase", "Auth0", "Docker", "PCF", "GitHub Actions"],
+    techs: ["AWS (S3, DynamoDB, Cognito)", "Google Cloud", "Firebase", "Auth0", "Okta", "Docker", "PCF", "GitHub Actions"],
   },
   {
     key: "ai",

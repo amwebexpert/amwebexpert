@@ -32,7 +32,9 @@
     "role1": "Spécialiste Flutter",
     "role2": "Expert Web",
     "role3": "Passionné IA",
-    "subtitle": "15+ ans à concevoir des applications mobiles, plateformes web et logiciels d'entreprise",
+    "role4": "Ingénieur IA",
+    "currentRole": "Ingénieur logiciel senior — Lichens Innovation",
+    "subtitle": "20+ ans à concevoir des applications mobiles, plateformes web, logiciels d'entreprise et IA industrielle pour les mines",
     "expertiseTitle": "Compétences clés",
     "mobile": "Mobile & Natif",
     "mobileDesc": "Flutter, React Native, développement iOS & Android",
@@ -43,17 +45,33 @@
   },
   "aboutPage": {
     "title": "À propos",
-    "subtitle": "Ingénieur logiciel Mobile & Web",
-    "experience": "15+ ans d'expérience",
-    "summary": "Ingénieur logiciel polyvalent avec une expertise approfondie en développement mobile (Flutter, React Native) et applications web complètes. Expérience éprouvée dans les secteurs de la finance, l'assurance, l'éducation, la gestion documentaire et les services gouvernementaux.",
+    "subtitle": "Ingénieur logiciel senior — Mobile & Full-Stack",
+    "experience": "20+ ans d'expérience",
+    "currentEmployer": "Lichens Innovation · depuis déc. 2024",
+    "summary": "Ingénieur logiciel mobile et full-stack expérimenté sur des projets à grande échelle en finance, gouvernement et assurance. Backends Spring Boot et Node.js ; mobile avec Flutter et React Native. Actuellement, conception d'outils IA industriels pour les mines et la métallurgie en tant que conseiller technologique chez Lichens Innovation.",
     "expertiseTitle": "Expertise",
     "languagesTitle": "Langues",
     "french": "Français — Langue maternelle",
     "english": "Anglais — Niveau professionnel",
     "industriesTitle": "Secteurs",
-    "industriesList": "Finance · Assurance · Éducation · Gouvernement · Gestion documentaire",
-    "resumeLabel": "Télécharger le CV",
-    "educationTitle": "Formation"
+    "industriesList": "Finance · Assurance · Éducation · Gouvernement · Gestion documentaire · Marketing tech · Mines & métallurgie",
+    "educationTitle": "Formation",
+    "experienceTitle": "Parcours professionnel",
+    "viewAiProjects": "Voir les projets IA",
+    "certificationTitle": "Certification",
+    "certification": "Sun Certified Web Component Developer",
+    "testimonialsTitle": "Recommandations",
+    "testimonials": {
+      "ericRole": "Mentoré — Projet application mobile Beneva",
+      "danielRole": "Collègue"
+    },
+    "publicationsTitle": "Publications & contenus",
+    "publications": {
+      "flutter3d": "Perspective et effets 3D dans Flutter (YouTube)",
+      "flutterVsRn": "Développer avec Flutter et comparer avec React Native (YouTube, FR)",
+      "gaeReview": "Revue : Using Google App Engine to build a classic Java Spring Webapp (TrustRadius)",
+      "esignliveReview": "eSignLive simplify integration — évaluation produit (TrustRadius)"
+    }
   },
   "technologies": {
     "title": "Technologies",
@@ -70,11 +88,42 @@
   "achievements": {
     "title": "Projets Open Source",
     "subtitle": "Une sélection de projets open source sur GitHub",
-    "viewOnGitHub": "GitHub"
+    "viewOnGitHub": "GitHub",
+    "projects": {
+      "webToolbox": {
+        "title": "Web Toolbox",
+        "description": "Collection d'outils développeur React/TypeScript — formateurs, convertisseurs, QR codes, UUIDs, OCR, et plus. Disponible en SPA web ou application Electron."
+      },
+      "amwebexpert": {
+        "title": "amwebexpert",
+        "description": "CV professionnel interactif et portfolio web. SPA React/TypeScript avec Ant Design, TanStack Router, support multilingue (EN/FR) et déploiement GitHub Pages."
+      },
+      "guessTheText": {
+        "title": "Guess the Text",
+        "description": "Jeu éducatif Flutter/Dart déployable sur Linux, Android, iOS, Web et macOS. MobX, persistance locale, pattern IoC, tests E2E et API REST Node.js/NestJS."
+      },
+      "chromeExtensions": {
+        "title": "Chrome Extensions Collection",
+        "description": "Collection d'extensions Chrome pour optimiser les workflows développeur. Gestion d'onglets, presse-papiers et utilitaires de productivité."
+      },
+      "codingGuideHelper": {
+        "title": "Coding Guide Helper",
+        "description": "Extension Chrome pour faciliter les revues de PR et parcourir les standards de code. Intègre le guide de développement du projet directement dans le navigateur."
+      },
+      "rnPocCollection": {
+        "title": "Collection POC React Native",
+        "description": "Collection de preuves de concept : chiffrement, partage de fichiers Expo, OAuth2 federated sign-in, viewer 3D Three.js, signature pad et thème Material Design."
+      },
+      "openMindset": {
+        "title": "Open Mindset App",
+        "description": "Application 100 % Python native avec KivyMD et fonctionnalités IA. Codebase unique déployable sur Android, iOS, macOS, Linux et Windows."
+      }
+    }
   },
   "ai": {
     "title": "Intelligence Artificielle",
-    "subtitle": "Projets IA, ML & RAG on-device chez Lichens Innovation",
+    "subtitle": "IA industrielle, ML, RAG & solutions on-device chez Lichens Innovation — conseiller technologique en mines & métallurgie. Présentation au CIM Connect 2026.",
+    "intro": "En tant que conseiller technologique indépendant chez Lichens Innovation, j'aide les acteurs des mines et de la métallurgie à créer des outils IA pratiques et fiables — de la vision par ordinateur temps réel aux pipelines RAG entièrement locaux.",
     "techStackTitle": "Stack IA & ML",
     "projectsTitle": "Projets IA",
     "llm": "LLMs & Inférence",

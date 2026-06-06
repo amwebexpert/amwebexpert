@@ -50,8 +50,11 @@ export const AiPage: FunctionComponent = () => {
   return (
     <div style={{ padding: "32px 24px", maxWidth: 960, margin: "0 auto" }}>
       <Typography.Title level={2}>{t("ai:title")}</Typography.Title>
-      <Typography.Paragraph type="secondary" style={{ marginBottom: 32 }}>
+      <Typography.Paragraph type="secondary" style={{ marginBottom: 16 }}>
         {t("ai:subtitle")}
+      </Typography.Paragraph>
+      <Typography.Paragraph style={{ marginBottom: 32, fontSize: 15, lineHeight: 1.8 }}>
+        {t("ai:intro")}
       </Typography.Paragraph>
 
       <Typography.Title level={4} style={{ marginBottom: 16 }}>

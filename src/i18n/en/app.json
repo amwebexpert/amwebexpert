@@ -32,7 +32,9 @@
     "role1": "Flutter Specialist",
     "role2": "Web Expert",
     "role3": "AI Enthusiast",
-    "subtitle": "15+ years building mobile apps, web platforms & enterprise software",
+    "role4": "AI Engineer",
+    "currentRole": "Senior Software Engineer — Lichens Innovation",
+    "subtitle": "20+ years building mobile apps, web platforms, enterprise software & industrial AI for mining",
     "expertiseTitle": "Core Expertise",
     "mobile": "Mobile & Native",
     "mobileDesc": "Flutter, React Native, iOS & Android development",
@@ -43,17 +45,33 @@
   },
   "aboutPage": {
     "title": "About",
-    "subtitle": "Mobile & Web Software Engineer",
-    "experience": "15+ years of experience",
-    "summary": "Versatile software engineer with deep expertise in mobile development (Flutter, React Native) and full web applications. Proven track record across finance, insurance, education, document management, and government sectors.",
+    "subtitle": "Senior Software Engineer — Mobile & Full-Stack",
+    "experience": "20+ years of experience",
+    "currentEmployer": "Lichens Innovation · since Dec 2024",
+    "summary": "Experienced mobile and full-stack software engineer working on large-scale projects for financial, government, and insurance organizations. Backend solutions with Spring Boot and Node.js; mobile with Flutter and React Native. Currently building industrial AI tools for mining & metallurgy as a technology advisor at Lichens Innovation.",
     "expertiseTitle": "Expertise",
     "languagesTitle": "Languages",
     "french": "French — Native",
     "english": "English — Business level",
     "industriesTitle": "Industries",
-    "industriesList": "Finance · Insurance · Education · Government · Document Management",
-    "resumeLabel": "Download Resume",
-    "educationTitle": "Education"
+    "industriesList": "Finance · Insurance · Education · Government · Document Management · Marketing Tech · Mining & Metallurgy",
+    "educationTitle": "Education",
+    "experienceTitle": "Professional Experience",
+    "viewAiProjects": "View AI projects",
+    "certificationTitle": "Certification",
+    "certification": "Sun Certified Web Component Developer",
+    "testimonialsTitle": "Recommendations",
+    "testimonials": {
+      "ericRole": "Mentee — Beneva mobile app project",
+      "danielRole": "Colleague"
+    },
+    "publicationsTitle": "Publications & Content",
+    "publications": {
+      "flutter3d": "Perspective and 3D effects in Flutter (YouTube)",
+      "flutterVsRn": "Develop with Flutter and compare with React Native (YouTube, FR)",
+      "gaeReview": "Review: Using Google App Engine to build a classic Java Spring Webapp (TrustRadius)",
+      "esignliveReview": "eSignLive simplify integration — product evaluation (TrustRadius)"
+    }
   },
   "technologies": {
     "title": "Technologies",
@@ -70,11 +88,42 @@
   "achievements": {
     "title": "Open Source Projects",
     "subtitle": "A selection of open source projects on GitHub",
-    "viewOnGitHub": "GitHub"
+    "viewOnGitHub": "GitHub",
+    "projects": {
+      "webToolbox": {
+        "title": "Web Toolbox",
+        "description": "React/TypeScript collection of developer tools — formatters, converters, QR codes, UUIDs, OCR, and more. Available as a web SPA or Electron desktop app."
+      },
+      "amwebexpert": {
+        "title": "amwebexpert",
+        "description": "Interactive professional CV and portfolio webapp. React/TypeScript SPA with Ant Design, TanStack Router, multilingual support (EN/FR), and GitHub Pages deployment."
+      },
+      "guessTheText": {
+        "title": "Guess the Text",
+        "description": "Flutter/Dart educational word game deployable on Linux, Android, iOS, Web, and macOS. MobX state management, local persistence, IoC pattern, E2E tests, and Node.js/NestJS REST API backend."
+      },
+      "chromeExtensions": {
+        "title": "Chrome Extensions Collection",
+        "description": "Collection of Chrome extensions to streamline developer workflows. Tab management, clipboard helpers, and productivity utilities."
+      },
+      "codingGuideHelper": {
+        "title": "Coding Guide Helper",
+        "description": "Chrome extension to assist pull request reviews and browse coding standards. Integrates your project's development guide directly into the browser."
+      },
+      "rnPocCollection": {
+        "title": "React Native POC Collection",
+        "description": "Proof-of-concept collection: encryption, Expo file sharing, OAuth2 federated sign-in, Three.js 3D viewer, signature pad, and Material Design theming."
+      },
+      "openMindset": {
+        "title": "Open Mindset App",
+        "description": "100% Python native app using KivyMD with AI features. Single codebase deployable on Android, iOS, macOS, Linux, and Windows."
+      }
+    }
   },
   "ai": {
     "title": "Artificial Intelligence",
-    "subtitle": "ML, RAG & On-device AI projects at Lichens Innovation",
+    "subtitle": "Industrial AI, ML, RAG & on-device solutions at Lichens Innovation — technology advisor for mining & metallurgy. Presenting at CIM Connect 2026.",
+    "intro": "As an independent technology advisor at Lichens Innovation, I help mining and metallurgy stakeholders build practical, reliable AI tools — from real-time computer vision to fully local RAG pipelines.",
     "techStackTitle": "AI & ML Stack",
     "projectsTitle": "AI Projects",
     "llm": "LLMs & Inference",

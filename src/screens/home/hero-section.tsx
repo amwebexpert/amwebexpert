@@ -4,13 +4,13 @@ import { useTranslation } from "react-i18next";
 import { useTypewriter } from "~/hooks/use-typewriter";
 import { TechBadgeCloud } from "./tech-badge-cloud";
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 export const HeroSection: FunctionComponent = () => {
   const { t } = useTranslation();
   const { token } = theme.useToken();
 
-  const roles = [t("home:role0"), t("home:role1"), t("home:role2"), t("home:role3")];
+  const roles = [t("home:role0"), t("home:role1"), t("home:role2"), t("home:role3"), t("home:role4")];
   const { displayText } = useTypewriter(roles);
 
   return (
@@ -38,6 +38,17 @@ export const HeroSection: FunctionComponent = () => {
       >
         André Masson
       </Title>
+
+      <Text
+        type="secondary"
+        style={{
+          fontSize: 15,
+          opacity: 0,
+          animation: "fadeInUp 0.6s ease 100ms forwards",
+        }}
+      >
+        {t("home:currentRole")}
+      </Text>
 
       <div style={{ minHeight: 48, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Title
