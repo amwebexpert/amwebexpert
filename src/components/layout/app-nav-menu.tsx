@@ -22,7 +22,7 @@ interface NavItemConfig {
 
 const NAV_ITEMS: NavItemConfig[] = [
   { key: APP_NAV_ROUTES.home, icon: <HomeOutlined />, labelKey: "nav:home" },
-  { key: APP_NAV_ROUTES.about, icon: <ContactsOutlined />, labelKey: "nav:about" },
+  { key: APP_NAV_ROUTES.profile, icon: <ContactsOutlined />, labelKey: "nav:profile" },
   { key: APP_NAV_ROUTES.technologies, icon: <ToolOutlined />, labelKey: "nav:technologies" },
   { key: APP_NAV_ROUTES.achievements, icon: <StarOutlined />, labelKey: "nav:achievements" },
   { key: APP_NAV_ROUTES.ai, icon: <RobotOutlined />, labelKey: "nav:ai" },

@@ -16,7 +16,7 @@
   },
   "nav": {
     "home": "Accueil",
-    "about": "À propos",
+    "profile": "Profil",
     "technologies": "Technologies",
     "achievements": "Projets Open Source",
     "ai": "IA & ML",
@@ -44,7 +44,7 @@
     "enterpriseDesc": "TypeScript, NestJS, AWS, Docker, CI/CD"
   },
   "aboutPage": {
-    "title": "À propos",
+    "title": "Profil",
     "subtitle": "Ingénieur logiciel senior — Mobile & Full-Stack",
     "experience": "20+ ans d'expérience",
     "currentEmployer": "Lichens Innovation · depuis déc. 2024",

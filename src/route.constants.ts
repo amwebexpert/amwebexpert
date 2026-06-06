@@ -1,6 +1,6 @@
 export const APP_NAV_ROUTES = {
   home: "/",
-  about: "/about",
+  profile: "/profile",
   technologies: "/technologies",
   achievements: "/achievements",
   ai: "/ai",
