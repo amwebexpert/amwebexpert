@@ -1,9 +1,8 @@
-import { GithubOutlined, StarOutlined } from "@ant-design/icons";
-import { Alert, Card, Col, Input, Row, Spin, Tag, Typography } from "antd";
+import { Alert, Col, Input, Row, Spin, Typography } from "antd";
 import type { FunctionComponent } from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FadeInItem } from "~/components/fade-in-item";
+import { DemosPageRepoCard } from "./demos-page-repo-card";
 import { useGitHubRepos } from "./use-github-repos";
 
 export const DemosPage: FunctionComponent = () => {
@@ -16,6 +15,8 @@ export const DemosPage: FunctionComponent = () => {
       repo.name.toLowerCase().includes(search.toLowerCase()) ||
       (repo.description ?? "").toLowerCase().includes(search.toLowerCase())
   );
+
+  const hasNoResults = !isLoading && filtered?.length === 0;
 
   return (
     <div style={{ padding: "32px 24px", maxWidth: 960, margin: "0 auto" }}>
@@ -41,44 +42,12 @@ export const DemosPage: FunctionComponent = () => {
 
       {isError && <Alert type="error" message={t("demos:error")} style={{ marginBottom: 24 }} />}
 
-      {filtered && filtered.length === 0 && !isLoading && (
-        <Typography.Text type="secondary">{t("demos:noResults")}</Typography.Text>
-      )}
+      {hasNoResults && <Typography.Text type="secondary">{t("demos:noResults")}</Typography.Text>}
 
       <Row gutter={[16, 16]}>
         {filtered?.map((repo, index) => (
           <Col xs={24} sm={12} md={8} key={repo.id}>
-            <FadeInItem index={index} style={{ height: "100%" }}>
-              <Card
-                size="small"
-                style={{ height: "100%" }}
-                title={repo.name}
-                extra={
-                  <a
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t("demos:viewOnGitHub")}
-                  >
-                    <GithubOutlined />
-                  </a>
-                }
-              >
-                {repo.description && (
-                  <Typography.Paragraph type="secondary" style={{ fontSize: 12, marginBottom: 8 }} ellipsis={{ rows: 2 }}>
-                    {repo.description}
-                  </Typography.Paragraph>
-                )}
-                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                  {repo.language && <Tag style={{ margin: 0, fontSize: 11 }}>{repo.language}</Tag>}
-                  {repo.stargazers_count > 0 && (
-                    <Typography.Text type="secondary" style={{ fontSize: 11 }}>
-                      <StarOutlined /> {repo.stargazers_count}
-                    </Typography.Text>
-                  )}
-                </div>
-              </Card>
-            </FadeInItem>
+            <DemosPageRepoCard repo={repo} index={index} />
           </Col>
         ))}
       </Row>
