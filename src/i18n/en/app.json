@@ -17,10 +17,10 @@
   "nav": {
     "home": "Home",
     "profile": "Profile",
-    "technologies": "Technologies",
-    "achievements": "Open Source Projects",
-    "ai": "AI & ML",
-    "githubRepos": "GitHub Repos",
+    "technologies": "Tech Stack",
+    "achievements": "Featured Projects",
+    "ai": "AI Projects",
+    "githubRepos": "All Repositories",
     "contact": "Contact"
   },
   "menu": {
@@ -92,7 +92,7 @@
     }
   },
   "technologies": {
-    "title": "Technologies",
+    "title": "Tech Stack",
     "subtitle": "Tools and technologies I work with",
     "languages": "Programming Languages",
     "mobile": "Mobile Development",
@@ -104,8 +104,8 @@
     "ai": "AI & Machine Learning"
   },
   "achievements": {
-    "title": "Open Source Projects",
-    "subtitle": "A selection of open source projects on GitHub",
+    "title": "Featured Projects",
+    "subtitle": "A selection of open source projects I created on GitHub",
     "viewOnGitHub": "GitHub",
     "projects": {
       "webToolbox": {
@@ -131,7 +131,7 @@
     }
   },
   "ai": {
-    "title": "Artificial Intelligence",
+    "title": "AI Projects",
     "subtitle": "Industrial AI, ML, RAG & on-device solutions at Lichens Innovation — technology advisor for mining & metallurgy. Presenting at CIM Connect 2026.",
     "intro": "As an independent technology advisor at Lichens Innovation, I help mining and metallurgy stakeholders build practical, reliable AI tools — from real-time computer vision to fully local RAG pipelines.",
     "techStackTitle": "AI & ML Stack",
@@ -191,8 +191,8 @@
     }
   },
   "githubRepos": {
-    "title": "GitHub Repos",
-    "subtitle": "Live GitHub repositories",
+    "title": "All Repositories",
+    "subtitle": "Live list of GitHub repositories I created",
     "loading": "Loading repositories...",
     "error": "Failed to load repositories",
     "stars": "Stars",

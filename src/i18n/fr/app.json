@@ -17,10 +17,10 @@
   "nav": {
     "home": "Accueil",
     "profile": "Profil",
-    "technologies": "Technologies",
-    "achievements": "Projets Open Source",
-    "ai": "IA & ML",
-    "githubRepos": "Dépôts GitHub",
+    "technologies": "Stack technique",
+    "achievements": "Projets phares",
+    "ai": "Projets IA",
+    "githubRepos": "Tous les dépôts",
     "contact": "Contact"
   },
   "menu": {
@@ -92,7 +92,7 @@
     }
   },
   "technologies": {
-    "title": "Technologies",
+    "title": "Stack technique",
     "subtitle": "Outils et technologies avec lesquels je travaille",
     "languages": "Langages de programmation",
     "mobile": "Développement mobile",
@@ -104,8 +104,8 @@
     "ai": "IA & Apprentissage automatique"
   },
   "achievements": {
-    "title": "Projets Open Source",
-    "subtitle": "Une sélection de projets open source sur GitHub",
+    "title": "Projets phares",
+    "subtitle": "Une sélection de projets open source que j'ai créés sur GitHub",
     "viewOnGitHub": "GitHub",
     "projects": {
       "webToolbox": {
@@ -131,7 +131,7 @@
     }
   },
   "ai": {
-    "title": "Intelligence Artificielle",
+    "title": "Projets IA",
     "subtitle": "IA industrielle, ML, RAG & solutions on-device chez Lichens Innovation — conseiller technologique en mines & métallurgie. Présentation au CIM Connect 2026.",
     "intro": "En tant que conseiller technologique indépendant chez Lichens Innovation, j'aide les acteurs des mines et de la métallurgie à créer des outils IA pratiques et fiables — de la vision par ordinateur temps réel aux pipelines RAG entièrement locaux.",
     "techStackTitle": "Stack IA & ML",
@@ -191,8 +191,8 @@
     }
   },
   "githubRepos": {
-    "title": "Dépôts GitHub",
-    "subtitle": "Dépôts GitHub en direct",
+    "title": "Tous les dépôts",
+    "subtitle": "Liste en direct de dépôts GitHub que j'ai créés",
     "loading": "Chargement des dépôts...",
     "error": "Impossible de charger les dépôts",
     "stars": "Étoiles",
