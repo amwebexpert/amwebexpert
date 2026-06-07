@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { type GenerateResumePdfArgs, generateResumePdf } from "./resume-pdf.utils";
+import { ResumePdfBuilder } from "./resume-pdf-builder";
+import { type GenerateResumePdfArgs } from "./resume-pdf.utils";
 
 interface UseGenerateResumePdfResult {
   generateResume: () => void;
@@ -12,7 +13,7 @@ export const useGenerateResumePdf = (): UseGenerateResumePdfResult => {
   const { t, i18n } = useTranslation();
 
   const { mutate, isPending } = useMutation<string, Error, GenerateResumePdfArgs>({
-    mutationFn: generateResumePdf,
+    mutationFn: (args: GenerateResumePdfArgs) => new ResumePdfBuilder(args).build(),
     onSuccess: (filename: string) => {
       toast.success(t("pdf:success"), { description: t("pdf:exportFileDescription", { filename }) });
     },
