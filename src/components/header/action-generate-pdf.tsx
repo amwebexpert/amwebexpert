@@ -2,7 +2,7 @@ import { FilePdfOutlined } from "@ant-design/icons";
 import type { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import { AsyncActionButton } from "~/components/buttons/async-action-button";
-import { useGenerateResumePdf } from "./pdf/use-generate-resume-pdf";
+import { useGenerateResumePdf } from "~/services/pdf/use-generate-resume-pdf";
 
 export const ActionGeneratePdf: FunctionComponent = () => {
   const { t } = useTranslation();
