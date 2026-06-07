@@ -4,6 +4,6 @@ export const APP_NAV_ROUTES = {
   technologies: "/technologies",
   achievements: "/achievements",
   ai: "/ai",
-  demos: "/demos",
+  githubRepos: "/github-repos",
   contact: "/contact",
 } as const;

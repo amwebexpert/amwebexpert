@@ -20,7 +20,7 @@
     "technologies": "Technologies",
     "achievements": "Open Source Projects",
     "ai": "AI & ML",
-    "demos": "Demos",
+    "githubRepos": "GitHub Repos",
     "contact": "Contact"
   },
   "menu": {
@@ -59,8 +59,6 @@
     "educationTitle": "Education",
     "experienceTitle": "Professional Experience",
     "viewAiProjects": "View AI projects",
-    "certificationTitle": "Certification",
-    "certification": "Sun Certified Web Component Developer",
     "testimonialsTitle": "Recommendations",
     "testimonials": {
       "eric": {
@@ -192,8 +190,8 @@
       }
     }
   },
-  "demos": {
-    "title": "Demos",
+  "githubRepos": {
+    "title": "GitHub Repos",
     "subtitle": "Live GitHub repositories",
     "loading": "Loading repositories...",
     "error": "Failed to load repositories",

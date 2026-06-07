@@ -26,7 +26,7 @@ const NAV_ITEMS: NavItemConfig[] = [
   { key: APP_NAV_ROUTES.technologies, icon: <ToolOutlined />, labelKey: "nav:technologies" },
   { key: APP_NAV_ROUTES.achievements, icon: <StarOutlined />, labelKey: "nav:achievements" },
   { key: APP_NAV_ROUTES.ai, icon: <RobotOutlined />, labelKey: "nav:ai" },
-  { key: APP_NAV_ROUTES.demos, icon: <LaptopOutlined />, labelKey: "nav:demos" },
+  { key: APP_NAV_ROUTES.githubRepos, icon: <LaptopOutlined />, labelKey: "nav:githubRepos" },
   { key: APP_NAV_ROUTES.contact, icon: <BulbOutlined />, labelKey: "nav:contact" },
 ];
 

@@ -24,13 +24,6 @@ export const AboutPageProfileCard: FunctionComponent = () => {
 
       <div style={{ textAlign: "left" }}>
         <Text strong style={{ display: "block", marginBottom: 8 }}>
-          {t("aboutPage:certificationTitle")}
-        </Text>
-        <Text type="secondary" style={{ fontSize: 13, display: "block", marginBottom: 16 }}>
-          {t("aboutPage:certification")}
-        </Text>
-
-        <Text strong style={{ display: "block", marginBottom: 8 }}>
           {t("aboutPage:languagesTitle")}
         </Text>
         <Tag color="blue" style={{ marginBottom: 4 }}>

@@ -20,7 +20,7 @@
     "technologies": "Technologies",
     "achievements": "Projets Open Source",
     "ai": "IA & ML",
-    "demos": "Démos",
+    "githubRepos": "Dépôts GitHub",
     "contact": "Contact"
   },
   "menu": {
@@ -59,8 +59,6 @@
     "educationTitle": "Études",
     "experienceTitle": "Parcours professionnel",
     "viewAiProjects": "Voir les projets IA",
-    "certificationTitle": "Certification",
-    "certification": "Sun Certified Web Component Developer",
     "testimonialsTitle": "Recommandations",
     "testimonials": {
       "eric": {
@@ -192,8 +190,8 @@
       }
     }
   },
-  "demos": {
-    "title": "Démos",
+  "githubRepos": {
+    "title": "Dépôts GitHub",
     "subtitle": "Dépôts GitHub en direct",
     "loading": "Chargement des dépôts...",
     "error": "Impossible de charger les dépôts",

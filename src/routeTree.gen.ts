@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TechnologiesRouteImport } from './routes/technologies'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as DemosRouteImport } from './routes/demos'
+import { Route as GithubReposRouteImport } from './routes/github-repos'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as AchievementsRouteImport } from './routes/achievements'
@@ -27,9 +27,9 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemosRoute = DemosRouteImport.update({
-  id: '/demos',
-  path: '/demos',
+const GithubReposRoute = GithubReposRouteImport.update({
+  id: '/github-repos',
+  path: '/github-repos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -58,7 +58,7 @@ export interface FileRoutesByFullPath {
   '/achievements': typeof AchievementsRoute
   '/ai': typeof AiRoute
   '/contact': typeof ContactRoute
-  '/demos': typeof DemosRoute
+  '/github-repos': typeof GithubReposRoute
   '/profile': typeof ProfileRoute
   '/technologies': typeof TechnologiesRoute
 }
@@ -67,7 +67,7 @@ export interface FileRoutesByTo {
   '/achievements': typeof AchievementsRoute
   '/ai': typeof AiRoute
   '/contact': typeof ContactRoute
-  '/demos': typeof DemosRoute
+  '/github-repos': typeof GithubReposRoute
   '/profile': typeof ProfileRoute
   '/technologies': typeof TechnologiesRoute
 }
@@ -77,7 +77,7 @@ export interface FileRoutesById {
   '/achievements': typeof AchievementsRoute
   '/ai': typeof AiRoute
   '/contact': typeof ContactRoute
-  '/demos': typeof DemosRoute
+  '/github-repos': typeof GithubReposRoute
   '/profile': typeof ProfileRoute
   '/technologies': typeof TechnologiesRoute
 }
@@ -88,7 +88,7 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/ai'
     | '/contact'
-    | '/demos'
+    | '/github-repos'
     | '/profile'
     | '/technologies'
   fileRoutesByTo: FileRoutesByTo
@@ -97,7 +97,7 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/ai'
     | '/contact'
-    | '/demos'
+    | '/github-repos'
     | '/profile'
     | '/technologies'
   id:
@@ -106,7 +106,7 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/ai'
     | '/contact'
-    | '/demos'
+    | '/github-repos'
     | '/profile'
     | '/technologies'
   fileRoutesById: FileRoutesById
@@ -116,7 +116,7 @@ export interface RootRouteChildren {
   AchievementsRoute: typeof AchievementsRoute
   AiRoute: typeof AiRoute
   ContactRoute: typeof ContactRoute
-  DemosRoute: typeof DemosRoute
+  GithubReposRoute: typeof GithubReposRoute
   ProfileRoute: typeof ProfileRoute
   TechnologiesRoute: typeof TechnologiesRoute
 }
@@ -137,11 +137,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demos': {
-      id: '/demos'
-      path: '/demos'
-      fullPath: '/demos'
-      preLoaderRoute: typeof DemosRouteImport
+    '/github-repos': {
+      id: '/github-repos'
+      path: '/github-repos'
+      fullPath: '/github-repos'
+      preLoaderRoute: typeof GithubReposRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -180,7 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AchievementsRoute: AchievementsRoute,
   AiRoute: AiRoute,
   ContactRoute: ContactRoute,
-  DemosRoute: DemosRoute,
+  GithubReposRoute: GithubReposRoute,
   ProfileRoute: ProfileRoute,
   TechnologiesRoute: TechnologiesRoute,
 }

@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import { FadeInItem } from "~/components/fade-in-item";
 import type { GitHubRepo } from "./use-github-repos";
 
-interface DemosPageRepoCardProps {
+interface GitHubReposPageRepoCardProps {
   repo: GitHubRepo;
   index: number;
 }
 
-export const DemosPageRepoCard: FunctionComponent<DemosPageRepoCardProps> = ({ repo, index }) => {
+export const GitHubReposPageRepoCard: FunctionComponent<GitHubReposPageRepoCardProps> = ({ repo, index }) => {
   const { t } = useTranslation();
 
   return (
@@ -20,7 +20,7 @@ export const DemosPageRepoCard: FunctionComponent<DemosPageRepoCardProps> = ({ r
         style={{ height: "100%" }}
         title={repo.name}
         extra={
-          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" aria-label={t("demos:viewOnGitHub")}>
+          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" aria-label={t("githubRepos:viewOnGitHub")}>
             <GithubOutlined />
           </a>
         }
