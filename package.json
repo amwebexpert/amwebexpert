@@ -6,16 +6,17 @@
   "type": "module",
   "author": "André Masson",
   "repository": "https://github.com/amwebexpert/amwebexpert",
+  "packageManager": "bun@1.3.14",
   "scripts": {
-    "start": "yarn dev",
+    "start": "bun dev",
     "dev": "vite",
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=4096 rimraf dist && tsc -b && vite build",
-    "deploy": "npm run build && rimraf docs && shx mv dist docs",
+    "deploy": "bun run build && rimraf docs && shx mv dist docs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "npx tsc --noEmit --project tsconfig.app.json",
+    "typecheck": "bunx tsc --noEmit --project tsconfig.app.json",
     "preview": "vite preview",
-    "generate:version": "node scripts/generate-version.mjs"
+    "generate:version": "bun scripts/generate-version.mjs"
   },
   "dependencies": {
     "@ant-design/icons": "6.2.5",
