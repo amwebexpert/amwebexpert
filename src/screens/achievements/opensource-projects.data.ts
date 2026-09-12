@@ -41,7 +41,7 @@ export const OPENSOURCE_PROJECT_ENTRIES: OpenSourceProjectEntry[] = [
   {
     key: "openMindset",
     tags: ["Python", "KivyMD", "SQLite"],
-    githubUrl: "https://github.com/amwebexpert/open-mindset",
+    githubUrl: "https://github.com/amwebexpert/poc-mobile-python",
     logo: "opensource/open-mindset.png",
   },
 ];
